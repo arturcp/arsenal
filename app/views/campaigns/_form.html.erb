@@ -23,12 +23,14 @@
 
   <div class="field">
     <%= f.label :start_date %>
-    <%= f.datetime_select :start_date %>
+    <%= f.datetime_select :start_date, {},  class: 'select-date' %>
+    <br />
   </div>
 
   <div class="field">
     <%= f.label :end_date %>
-    <%= f.datetime_select :end_date %>
+    <%= f.datetime_select :end_date, {}, class: 'select-date' %>
+    <br />
   </div>
 
   <div class="field">
@@ -37,6 +39,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Save', class: 'waves-effect waves-light btn' %>
   </div>
 <% end %>
