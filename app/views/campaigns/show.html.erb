@@ -1,29 +1,83 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col s12 m4 l4">
+    <div id="profile-card" class="card">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="http://demo.geekslabs.com/materialize/v3.1/images/user-bg.jpg" alt="user bg">
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">Campanha: <%= @campaign.name %></span>
+        <p><i class="mdi-action-perm-identity"></i> <%= @campaign.description %></p>
+        <p>
+            <i class="mdi-action-perm-phone-msg"></i>
+            De <%= @campaign.start_date.strftime('%d/%m/%Y') %>
+            até <%= @campaign.end_date.strftime('%d/%m/%Y') %>
+        </p>
+        <p><i class="mdi-communication-email"></i> Tipo <%= @campaign.campaign_type %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @campaign.name %>
-</p>
+        <p>
+          <%= link_to 'Editar campanha', edit_campaign_path(@campaign) %> |
+          <%= link_to 'Voltar', campaigns_path %>
+        </p>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @campaign.description %>
-</p>
+  <div class="col s12 m6">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">Items</span>
+        <p>
+          Uma campanha é composta por items: são eles que as pessoas vão doar
+          para que a campanha "<%= @campaign.name %>" seja bem sucedida.
+        </p>
+      </div>
+      <div class="card-action" data-url="%<= items_path %>" data-campaign-id="<%= @campaign.id %>">
+        <%= form_for(Item.new, class: 'col s12') do |f| %>
+          <%= f.hidden_field :campaign_id, value: @campaign.id %>
+          <%= hidden_field_tag :campaign_id, @campaign.id %>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.label 'Nome' %>
+              <%= f.text_field :name %>
+            </div>
+            <div class="input-field col s12">
+              <%= f.label 'Imagem' %>
+              <%= f.text_field :image_url %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.submit 'Salvar', class: 'btn waves-effect waves-light right save-button' %>
+            </div>
+          </div>
+        <% end %>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
 
-<p>
-  <strong>Start date:</strong>
-  <%= @campaign.start_date %>
-</p>
+<div class="row">
+  <div class="col s12">
+    <div class="card-panel">
+      <h4 class="header2">Itens cadastrados</h4>
+      <table class="striped">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Imagem</th>
+          </tr>
+        </thead>
 
-<p>
-  <strong>End date:</strong>
-  <%= @campaign.end_date %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @campaign.campaign_type %>
-</p>
-
-<%= link_to 'Edit', edit_campaign_path(@campaign) %> |
-<%= link_to 'Back', campaigns_path %>
+        <tbody>
+          <% @campaign.items.each do |item| %>
+            <tr>
+              <td><%= item.name %></td>
+              <td><%= image_tag(item.image_url) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

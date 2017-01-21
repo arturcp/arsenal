@@ -1,0 +1,28 @@
+.select-date {
+  display: inline;
+  width: 85px
+}
+
+
+table.striped > tbody > tr:nth-child(odd) {
+  background-color: $secondary-color-light-opacity;
+}
+
+.card-panel {
+  a {
+    color: $main-color-normal;
+  }
+
+  h4 {
+    color: $main-color-dark;
+  }
+}
+
+.save-button {
+  background-color: $secondary-color-light;
+  color: $main-color-dark;
+
+  &:hover {
+    background-color: $secondary-color-light-opacity;
+  }
+}

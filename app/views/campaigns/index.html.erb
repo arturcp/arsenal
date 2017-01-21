@@ -1,35 +1,51 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col s12 m12 l6">
+    <div class="card-panel">
+      <h4 class="header2">Campanhas</h4>
+      <div class="row">
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Início</th>
+              <th>Fim</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
 
-<h1>Campaigns</h1>
+          <tbody>
+            <% @campaigns.each do |campaign| %>
+              <tr>
+                <td><%= campaign.name %></td>
+                <td><%= campaign.start_date.strftime('%d/%m/%Y') %></td>
+                <td><%= campaign.end_date.strftime('%d/%m/%Y') %></td>
+                <td>
+                  <%= link_to campaign do %>
+                    <i class="fa fa-eye"></i>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to edit_campaign_path(campaign) do %>
+                    <i class="fa fa-pencil"></i>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to campaign, method: :delete, data: { confirm: 'Tem certeza?' } do %>
+                    <i class="fa fa-times"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th>Type</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @campaigns.each do |campaign| %>
-      <tr>
-        <td><%= campaign.name %></td>
-        <td><%= campaign.description %></td>
-        <td><%= campaign.start_date %></td>
-        <td><%= campaign.end_date %></td>
-        <td><%= campaign.campaign_type %></td>
-        <td><%= link_to 'Show', campaign %></td>
-        <td><%= link_to 'Edit', edit_campaign_path(campaign) %></td>
-        <td><%= link_to 'Destroy', campaign, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Campaign', new_campaign_path %>
+  <div class="col s12 m12 l6">
+    <div class="card-panel">
+      <h4 class="header2">Nova campanha</h4>
+      <%= render 'form', campaign: @campaign %>
+    </div>
+  </div>
+</div>

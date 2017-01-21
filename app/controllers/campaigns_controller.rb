@@ -5,6 +5,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns.json
   def index
     @campaigns = Campaign.all
+    @campaign = Campaign.new
   end
 
   # GET /campaigns/1
@@ -26,14 +27,11 @@ class CampaignsController < ApplicationController
   def create
     @campaign = Campaign.new(campaign_params)
 
-    respond_to do |format|
-      if @campaign.save
-        format.html { redirect_to @campaign, notice: 'Campaign was successfully created.' }
-        format.json { render :show, status: :created, location: @campaign }
-      else
-        format.html { render :new }
-        format.json { render json: @campaign.errors, status: :unprocessable_entity }
-      end
+    if @campaign.save
+      redirect_to @campaign, notice: 'Campaign was successfully created.'
+    else
+      @campaigns = Campaign.all
+      render :index
     end
   end
 
@@ -62,13 +60,13 @@ class CampaignsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_campaign
-      @campaign = Campaign.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_campaign
+    @campaign = Campaign.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def campaign_params
-      params.require(:campaign).permit(:name, :description, :start_date, :end_date, :campaign_type)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def campaign_params
+    params.require(:campaign).permit(:name, :description, :start_date, :end_date, :campaign_type)
+  end
 end

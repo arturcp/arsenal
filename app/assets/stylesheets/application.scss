@@ -1,9 +1,10 @@
 @charset "utf-8";
 @import 'materialize';
-@import 'reset';
 @import 'variables';
 
 @import 'font-awesome';
 
 @import 'modules/campaigns';
-@import 'modules/scaffolds';
+@import 'modules/header';
+@import 'modules/slide_menu';
+@import 'modules/style';

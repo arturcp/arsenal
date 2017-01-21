@@ -1,44 +1,54 @@
-<%= form_for(campaign) do |f| %>
+<div class="row">
   <% if campaign.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(campaign.errors.count, "error") %> prohibited this campaign from being saved:</h2>
-
-      <ul>
-      <% campaign.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div id="card-alert" class="card red lighten-5">
+      <div class="card-content red-text">
+        <p><%= pluralize(campaign.errors.count, 'erro') %> encontrado:</p>
+        <ul>
+          <% campaign.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+      <button type="button" class="close red-text" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= f.label :start_date %>
-    <%= f.datetime_select :start_date, {},  class: 'select-date' %>
-    <br />
-  </div>
-
-  <div class="field">
-    <%= f.label :end_date %>
-    <%= f.datetime_select :end_date, {}, class: 'select-date' %>
-    <br />
-  </div>
-
-  <div class="field">
-    <%= f.label :campaign_type %>
-    <%= f.number_field :campaign_type %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit 'Save', class: 'waves-effect waves-light btn' %>
-  </div>
-<% end %>
+  <% label_class = campaign.new_record? ? '' : 'active' %>
+  <%= form_for(campaign, class: 'col s12') do |f| %>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.label 'Nome', class: label_class %>
+        <%= f.text_field :name %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.label 'Descrição', class: label_class %>
+        <%= f.text_field :description %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.datetime_select :start_date, {},  class: 'select-date' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.datetime_select :end_date, {}, class: 'select-date' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.label 'Tipo', class: label_class %>
+        <%= f.number_field :campaign_type %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.submit 'Salvar', class: 'btn waves-effect waves-light right save-campaign' %>
+      </div>
+    </div>
+  <% end %>
+</div>
