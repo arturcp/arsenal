@@ -44,6 +44,10 @@
               <%= f.label 'Imagem' %>
               <%= f.text_field :image_url %>
             </div>
+            <div class="input-field col s12">
+              <%= f.label 'Preço' %>
+              <%= f.text_field :price %>
+            </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
@@ -66,6 +70,8 @@
           <tr>
             <th>Nome</th>
             <th>Imagem</th>
+            <th>Preço</th>
+            <th></th>
           </tr>
         </thead>
 
@@ -73,7 +79,13 @@
           <% @campaign.items.each do |item| %>
             <tr>
               <td><%= item.name %></td>
-              <td><%= image_tag(item.image_url) %></td>
+              <td><%= image_tag(item.image_url, class: 'item__image-thumbnail') %></td>
+              <td><%= number_to_currency(item.price) %></td>
+              <td>
+                <%= link_to item, method: :delete, data: { confirm: 'Tem certeza?' } do %>
+                  <i class="fa fa-times"></i>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>

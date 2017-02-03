@@ -13,8 +13,12 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
+# Front end gems
 gem 'materialize-sass'
 gem 'font-awesome-rails'
+
+# Payments
+gem 'pagseguro-oficial', '~> 2.5.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri

@@ -26,3 +26,7 @@ table.striped > tbody > tr:nth-child(odd) {
     background-color: $secondary-color-light-opacity;
   }
 }
+
+.item__image-thumbnail {
+  max-width: 60px;
+}
