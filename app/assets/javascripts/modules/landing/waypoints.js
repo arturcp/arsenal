@@ -23,7 +23,7 @@ $(document).ready(function() {
         goalAmount: $(this).data('target'),
         currentAmount: $(this).data('current-amount'),
         textBefore: 'R$ ',
-        textAfter: ' arrecadados.'
+        textAfter: ' arrecadados'
       });
       goal.attr('data-loaded', true);
     }
