@@ -16,4 +16,5 @@
 //= require materialize
 //= require waypoints/lib/jquery.waypoints
 //= require magnific-popup
+//= require goalProgress.js/goalProgress
 //= require_tree ./modules/landing
