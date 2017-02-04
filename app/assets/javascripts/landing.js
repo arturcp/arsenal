@@ -14,6 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require materialize
-//= require_tree ./modules/libs
 //= require waypoints/lib/jquery.waypoints
+//= require magnific-popup
 //= require_tree ./modules/landing
