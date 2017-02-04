@@ -13,13 +13,5 @@
         fixedContentPos: false
       });
     }
-
-    /* ====== Goal Progress ====== */
-      $('#goal-progress').goalProgress({
-        goalAmount: $(this).data('target'),
-        currentAmount: $(this).data('current-amount'),
-        textBefore: '',
-        textAfter: ' comprados.'
-      });
   });
 })(jQuery);

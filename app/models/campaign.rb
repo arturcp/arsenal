@@ -14,15 +14,15 @@ class Campaign < ApplicationRecord
     ['Termômetro', 'Pirâmide']
   end
 
-  def target
+  def target_value
     items.reduce(0) do |sum, item|
-      sum += item.target
+      sum += item.target * item.price
     end
   end
 
   def current_amount
     items.reduce(0) do |sum, item|
-      sum += item.current_amount
+      sum += item.current_amount * item.price
     end
   end
 end

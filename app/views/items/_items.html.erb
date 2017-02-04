@@ -1,9 +1,9 @@
 <section class="section-padding item-row">
   <div class="container">
-    <div class="text-center mb-80">
+    <div class="text-center mb-80 goal-progress">
       <h2 class="section-title text-uppercase"><%= campaign.name %></h2>
       <p class="section-sub text-left"><%= html_description(campaign) %></p>
-      <div id="goal-progress" data-target="<%= campaign.target %>" data-current-amount="<%= campaign.current_amount %>">
+      <div id="goal-progress" data-target="<%= campaign.target_value %>" data-current-amount="<%= campaign.current_amount %>">
       </div>
     </div>
 
