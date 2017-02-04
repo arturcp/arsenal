@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require materialize
 //= require_tree ./modules/libs
+//= require waypoints/lib/jquery.waypoints
 //= require_tree ./modules/landing
