@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :campaigns
-  resources :items, only: [:create, :destroy]
+  scope 'admin' do
+    resources :campaigns
+    resources :items, only: [:create, :destroy]
+  end
 
   get 'campanha/:campaign_id', to: 'items#index', as: 'landing_page'
 
