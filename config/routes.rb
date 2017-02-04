@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :campaigns
   resources :items, only: [:create, :destroy]
 
-  get 'campaign/:campaign_id/items', to: 'items#index', as: 'items_list'
+  get 'campanha/:campaign_id', to: 'items#index', as: 'landing_page'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
