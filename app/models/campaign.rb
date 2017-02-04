@@ -13,4 +13,16 @@ class Campaign < ApplicationRecord
   def types
     ['Termômetro', 'Pirâmide']
   end
+
+  def target
+    items.reduce(0) do |sum, item|
+      sum += item.target
+    end
+  end
+
+  def current_amount
+    items.reduce(0) do |sum, item|
+      sum += item.current_amount
+    end
+  end
 end
