@@ -1,5 +1,9 @@
 class ItemsController < ApplicationController
-  before_action :set_campaign, only: :create
+  before_action :set_campaign, only: [:create, :index]
+
+  def index
+    @items = @campaign.items
+  end
 
   def create
     Item.create!(valid_params)

@@ -3,12 +3,13 @@ class CheckoutsController < ApplicationController
 
   def create
     # order = Order.find(params[:id])
+    item = Item.find(params[:id])
 
     payment = PagSeguro::PaymentRequest.new
 
     payment.credentials = PagSeguro::AccountCredentials.new('artur.prado@gmail.com', '4FB6532320FC4176B4D97453B54C1F09')
 
-    payment.reference = 'REF1234'
+    payment.reference = item.id.to_s
     payment.notification_url = 'https://youse-remembrall.herokuapp.com'
     payment.redirect_url = 'https://youse-remembrall.herokuapp.com'
 
@@ -22,10 +23,9 @@ class CheckoutsController < ApplicationController
     # end
 
     payment.items << {
-      id: 1,
-      description: 'description',
-      amount: 5.0,
-      weight: 2
+      id: item.id,
+      description: item.description || 'Sem descrição',
+      amount: item.price
     }
 
     payment.sender = {
