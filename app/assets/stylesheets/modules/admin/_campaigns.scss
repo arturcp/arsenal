@@ -1,8 +1,7 @@
 .select-date {
   display: inline;
-  width: 85px
+  width: 100px;
 }
-
 
 table.striped > tbody > tr:nth-child(odd) {
   background-color: $secondary-color-light-opacity;
@@ -18,7 +17,8 @@ table.striped > tbody > tr:nth-child(odd) {
   }
 }
 
-.save-button {
+.save-button,
+.save-campaign {
   background-color: $secondary-color-light;
   color: $main-color-dark;
 
@@ -37,5 +37,8 @@ table.striped > tbody > tr:nth-child(odd) {
 
 .items-list {
   margin-top: 20px;
+}
 
+.campaign-type {
+  display: block;
 }

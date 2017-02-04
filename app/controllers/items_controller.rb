@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_campaign, only: [:create, :index]
 
   def index
-    @items = @campaign.items
+    render :index, layout: 'landing'
   end
 
   def create
