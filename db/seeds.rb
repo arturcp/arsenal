@@ -23,7 +23,8 @@ christmas.items.create!(
   description: 'O panetone é um alimento tradicional da época de Natal, de origem milanesa, do norte da Itália. Várias lendas tentam explicar a sua origem. O pão doce de natal possui fragrância discreta de baunilha e recheio de frutas secas, tais como damasco, laranja, limão, figo, maçã, cidra e a uva passa.',
   image_url: 'http://cdn1.mundodastribos.com/6370-receita-panetone-fazer-panetone-caseiro.jpg',
   target: 300,
-  price: 130.0
+  price: 50.0,
+  current_amount: 130
 )
 
 christmas.items.create!(
@@ -31,5 +32,6 @@ christmas.items.create!(
   description: 'Vinho é, genericamente, uma bebida alcoólica produzida por fermentação do sumo de uva',
   image_url: 'http://www.brechando.com/wp-content/uploads/2016/05/vinho.jpg',
   target: 100,
-  price: 130.0
+  price: 70.0,
+  current_amount: 40
 )

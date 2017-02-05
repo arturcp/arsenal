@@ -14,18 +14,20 @@ $(document).ready(function() {
     }
   }, waypointsOptions);
 
-  var goal = $('.goal-progress:first')
-  goal.waypoint(function(direction) {
-    var loaded = goal.data('loaded');
+  var campaignBlockContainer = $('#campaign-block-container');
+
+  campaignBlockContainer.waypoint(function(direction) {
+    var progressBar = campaignBlockContainer.find('#goal-progress'),
+        loaded = progressBar.data('loaded');
 
     if (!loaded) {
       $('#goal-progress').goalProgress({
-        goalAmount: $(this).data('target'),
-        currentAmount: $(this).data('current-amount'),
+        goalAmount: progressBar.data('target'),
+        currentAmount: progressBar.data('current-amount'),
         textBefore: 'R$ ',
-        textAfter: ' arrecadados'
+        textAfter: ''
       });
-      goal.attr('data-loaded', true);
+      progressBar.attr('data-loaded', true);
     }
   }, waypointsOptions);
 });
