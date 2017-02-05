@@ -15,7 +15,7 @@ christmas = Campaign.create!(
   end_date: Date.parse('2016-12-25'),
   campaign_type: Campaign::TERMOMETER,
   main_image_url: 'http://trendytheme.net/demo/matrox/assets/img/banner/banner-7.jpg',
-  video_url: 'https://www.youtube.com/watch?v=XVfOe5mFbAE'
+  video_url: 'https://www.youtube.com/watch?v=EK_OqnXg71U'
 )
 
 christmas.items.create!(

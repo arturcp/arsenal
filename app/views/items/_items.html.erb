@@ -9,7 +9,7 @@
       </div>
     </div>
 
-    <h1 class="text-center">Nossos produtos</h1>
+    <h1 class="text-center">Ajude nosso projeto a acontecer!</h1>
 </section>
 
 <% campaign.items.each_with_index do |item, index| %>
@@ -25,7 +25,7 @@
         <p class="item-description">
           <%= item.description %>
           <br /><br />
-          Até agora, conseguirmos <%= item.current_amount %> de <%= item.target %>. Que tal dar uma forcinha?
+          Até agora, conseguimos <%= item.current_amount %> de <%= item.target %>. Que tal dar uma forcinha?
         </p>
         <p class="item-price">
           <b>Valor:</b> <%= number_to_currency(item.price) %>
@@ -43,22 +43,3 @@
     </div>
   </section>
 <% end %>
-
-    <!-- <ul class="featured plus-box grid-3 equal-height-row">
-        <li>
-          <div class="featured-item equal-height-column">
-            <div class="icon">
-              <i class="material-icons"></i>
-            </div>
-            <div class="desc">
-              <h2>Fully Responsive</h2>
-              <p>Porttitor communicate pandemic data rather than enabled niche markets neque pulvinar vitae than enabled niche.</p>
-              <div style="position: relative" class="thermomether-container">
-
-              </div>
-            </div>
-          </div>
-        </li>
-    </ul>
-  </div>
-</section> -->
