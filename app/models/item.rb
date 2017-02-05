@@ -1,3 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :campaign
+
+  def price_for_current_amount
+    current_amount * price
+  end
 end
