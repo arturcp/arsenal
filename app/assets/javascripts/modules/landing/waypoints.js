@@ -3,7 +3,9 @@ $(document).ready(function() {
     offset: 'bottom-in-view'
   };
 
-  $('#maps-visibility').waypoint(function(direction) {
+  var trigger = $('#map-trigger');
+
+  trigger.waypoint(function(direction) {
     var elem = $('#maps-visibility'),
         src = elem.data('src'),
         loaded = elem.data('loaded');
@@ -14,7 +16,7 @@ $(document).ready(function() {
     }
   }, waypointsOptions);
 
-  var campaignBlockContainer = $('#campaign-block-container');
+  var campaignBlockContainer = $('#campaign-block-container')
 
   campaignBlockContainer.waypoint(function(direction) {
     var progressBar = campaignBlockContainer.find('#goal-progress'),
