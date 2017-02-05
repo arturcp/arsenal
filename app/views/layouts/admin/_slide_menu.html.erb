@@ -7,7 +7,7 @@
         </div>
         <div class="col col s8 m8 l8">
           <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">Marco<i class="fa fa-angle-down fa-1 right"></i></a>
-          <%= render 'layouts/profile_dropdown' %>
+          <%= render 'layouts/admin/profile_dropdown' %>
           <p class="user-roal">Administrator</p>
         </div>
       </div>
@@ -17,6 +17,11 @@
         <i class="fa fa-area-chart"></i>
         Dashboard</a>
     </li>
+    <li class="bold">
+      <a href="app-calendar.html" class="waves-effect waves-cyan">
+        <i class="fa fa-calendar"></i>
+        Calendário</a>
+    </li>
     <li class="bold active">
       <%= link_to campaigns_path, class: 'waves-effect waves-cyan' do %>
         <i class="fa fa-folder-open"></i>
@@ -24,9 +29,9 @@
       <% end %>
     </li>
     <li class="bold">
-      <a href="app-calendar.html" class="waves-effect waves-cyan">
-        <i class="fa fa-calendar"></i>
-        Calendário</a>
+      <a href="/campaign/1/items" class="waves-effect waves-cyan">
+        <i class="fa fa-credit-card"></i>
+        Compras</a>
     </li>
     <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;">
       <div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div>

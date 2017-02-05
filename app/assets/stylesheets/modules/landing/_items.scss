@@ -1,0 +1,22 @@
+.item-row-even {
+  background-color: $secondary-color-light-opacity;
+}
+
+.item-data {
+  color: #000;
+  font-size: 25px;
+
+  img.thumbnail {
+    max-width: 150px;
+    max-height: 150px;
+  }
+}
+
+.item-description,
+.item-price {
+  font-size: 17px;
+}
+
+.item-price {
+  color: #000;
+}

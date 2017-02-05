@@ -1,0 +1,23 @@
+{
+  "name": "arsenal",
+  "homepage": "https://github.com/arturcp/arsenal",
+  "authors": [
+    "Artur <artur.prado@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "waypoints": "^4.0.1",
+    "magnific-popup": "^1.1.0",
+    "goalProgress.js": "goalProgress#*",
+    "bootstrap": "^3.3.7"
+  }
+}

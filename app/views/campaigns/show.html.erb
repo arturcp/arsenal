@@ -2,20 +2,38 @@
   <div class="col s12 m4 l4">
     <div id="profile-card" class="card">
       <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="http://demo.geekslabs.com/materialize/v3.1/images/user-bg.jpg" alt="user bg">
+        <img class="activator" src="<%= @campaign.main_image_url %>" alt="user bg">
       </div>
+
+      <ul class="card-action-buttons">
+        <li>
+          <%=
+            link_to landing_page_path(@campaign),
+              class: 'btn-floating waves-effect waves-light green accent-4',
+              title: 'Ir para a campanha',
+              target: '_blank' do %>
+              <i class="fa fa-eye"></i></a>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to edit_campaign_path(@campaign), class: 'btn-floating waves-effect waves-light light-blue accent-4', title: 'Editar campanha' do %>
+            <i class="fa fa-pencil-square-o"></i></a>
+          <% end %>
+        </li>
+      </ul>
+
       <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">Campanha: <%= @campaign.name %></span>
-        <p><i class="mdi-action-perm-identity"></i> <%= @campaign.description %></p>
+        <h4 class="card-title activator grey-text text-darken-4 bold">
+          <%= @campaign.title %>
+        </h4>
         <p>
             <i class="mdi-action-perm-phone-msg"></i>
             De <%= @campaign.start_date.strftime('%d/%m/%Y') %>
             até <%= @campaign.end_date.strftime('%d/%m/%Y') %>
         </p>
-        <p><i class="mdi-communication-email"></i> Tipo <%= @campaign.campaign_type %></p>
+        <p><i class="mdi-communication-email"></i> Tipo: <%= @campaign.type_text %></p>
 
         <p>
-          <%= link_to 'Editar campanha', edit_campaign_path(@campaign) %> |
           <%= link_to 'Voltar', campaigns_path %>
         </p>
       </div>
@@ -25,7 +43,7 @@
   <div class="col s12 m6">
     <div class="card">
       <div class="card-content">
-        <span class="card-title">Items</span>
+        <span class="card-title">Itens da campanha</span>
         <p>
           Uma campanha é composta por items: são eles que as pessoas vão doar
           para que a campanha "<%= @campaign.name %>" seja bem sucedida.
@@ -43,6 +61,14 @@
             <div class="input-field col s12">
               <%= f.label 'Imagem' %>
               <%= f.text_field :image_url %>
+            </div>
+            <div class="input-field col s12">
+              <%= f.label 'Preço (em reais)' %>
+              <%= f.text_field :price %>
+            </div>
+            <div class="input-field col s12">
+              <%= f.label 'Quantidade esperada' %>
+              <%= f.number_field :target, min: 0 %>
             </div>
           </div>
           <div class="row">
@@ -66,6 +92,9 @@
           <tr>
             <th>Nome</th>
             <th>Imagem</th>
+            <th>Esperado</th>
+            <th>Preço</th>
+            <th></th>
           </tr>
         </thead>
 
@@ -73,7 +102,14 @@
           <% @campaign.items.each do |item| %>
             <tr>
               <td><%= item.name %></td>
-              <td><%= image_tag(item.image_url) %></td>
+              <td><%= image_tag(item.image_url, class: 'item__image-thumbnail') %></td>
+              <td><%= item.target %></td>
+              <td><%= number_to_currency(item.price) %></td>
+              <td>
+                <%= link_to item, method: :delete, data: { confirm: 'Tem certeza?' } do %>
+                  <i class="fa fa-times"></i>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>

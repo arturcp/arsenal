@@ -1,0 +1,45 @@
+<section>
+  <div class="container">
+    <div class="text-center mb-80" id="campaign-block-container">
+      <h2 class="section-title text-uppercase"><%= campaign.name %></h2>
+      <p class="section-sub text-left mb-80"><%= html_description(campaign) %></p>
+      <h2>Arrecadação</h2>
+      <h2><%= number_to_currency(campaign.current_amount) %> de <%= number_to_currency(campaign.target_value) %></h2>
+      <div id="goal-progress" data-target="<%= campaign.target_value %>" data-current-amount="<%= campaign.current_amount %>">
+      </div>
+    </div>
+
+    <h1 class="text-center">Ajude nosso projeto a acontecer!</h1>
+</section>
+
+<% campaign.items.each_with_index do |item, index| %>
+  <section class="section-padding item-row-<%= index.even? ? 'even' : 'odd' %>">
+    <div class="row">
+      <div class="col s2 relative">
+        <span class="thermometer">
+          <%= item.current_amount %>
+        </span>
+      </div>
+      <div class="col s8">
+        <h3><%= item.name %></h3>
+        <p class="item-description">
+          <%= item.description %>
+          <br /><br />
+          Até agora, conseguimos <%= item.current_amount %> de <%= item.target %>. Que tal dar uma forcinha?
+        </p>
+        <p class="item-price">
+          <b>Valor:</b> <%= number_to_currency(item.price) %>
+        </p>
+      </div>
+      <div class="col s2">
+        <div class="item-data">
+          <%= image_tag item.image_url, class: 'thumbnail' %>
+          <%= form_tag checkout_path do %>
+            <%= hidden_field_tag 'id', item.id %>
+            <%= image_submit_tag "https://infoprodutosmega.files.wordpress.com/2016/09/pagar-com-pagseguro.jpg?w=145" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

@@ -22,3 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+# Pagseguro
+
+To test the sandbox, go to [the sandbox url](sandbox.pagseguro.uol.com.br)
