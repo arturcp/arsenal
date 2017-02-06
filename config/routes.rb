@@ -4,9 +4,9 @@ Rails.application.routes.draw do
     resources :items, only: [:create, :destroy]
   end
 
-  get 'campanha/:campaign_id', to: 'items#index', as: 'landing_page'
+  resources :shopping_cart, only: [:index, :create, :destroy]
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'campanha/:campaign_id', to: 'items#index', as: 'landing_page'
 
   resource :checkout, only: :create
   root 'campaigns#index'

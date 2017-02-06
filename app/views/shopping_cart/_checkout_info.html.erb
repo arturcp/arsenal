@@ -1,0 +1,30 @@
+<div class="row shopping-cart__checkout-info">
+  <div class="col offset-l6 s12 m12 l6 text-center">
+    <h2 class="header">Resumo da compra</h2>
+    <div class="card horizontal">
+      <div class="card-stacked">
+        <div class="card-content">
+          <div class="row">
+            <div class="col s6">
+              <p>
+                Você escolheu <b><%= pluralize(@shopping_cart.total, 'item', 'itens') %></b>
+              </p>
+              <p>
+                Valor Total: <b><%= number_to_currency(@shopping_cart.price) %></b>
+              </p>
+            </div>
+            <div class="col s6 text-center">
+              <%= form_tag checkout_path do %>
+                <%= hidden_field_tag 'id', 1 %>
+                <%= submit_tag 'Comprar', class: 'place-order btn waves-effect waves-light' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="card-action">
+          <div class="pagseguro"></div>
+        </div>
+     </div>
+    </div>
+  </div>
+</div>
