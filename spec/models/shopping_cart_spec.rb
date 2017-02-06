@@ -22,6 +22,15 @@ RSpec.describe ShoppingCart, type: :model do
         expect(item.id).to eq(bread.id)
         expect(item.current_amount).to eq(10)
       end
+
+      it 'sums new quantity if item is already on the cart' do
+        cart.add(bread.id, 10)
+        cart.add(bread.id, 5)
+
+        item = cart.items.first
+
+        expect(item.current_amount).to eq(15)
+      end
     end
 
     context 'when quantity is invalid' do

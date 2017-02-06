@@ -1,20 +1,22 @@
 class ShoppingCart
+  attr_reader :cart
+
   def initialize(session)
-    @cart = session || {}
+    @cart = session[:cart] || {}
   end
 
-  def add(item_id, quantity)
-    key = item_id.to_s.to_sym
+  def add(item_id, quantity = 1)
+    key = item_id.to_s
 
     if quantity <= 0
       remove(key)
     else
-      @cart[key] = quantity
+      @cart[key] = @cart[key].to_i + quantity
     end
   end
 
   def remove(item_id)
-    @cart.delete(item_id.to_s.to_sym)
+    @cart.delete(item_id.to_s)
   end
 
   def total
@@ -27,7 +29,7 @@ class ShoppingCart
 
   def items
     @cart.clone.map do |item_id, quantity|
-      item = Item.find(item_id.to_s.to_i)
+      item = Item.find(item_id.to_i)
       item.current_amount = quantity
 
       item

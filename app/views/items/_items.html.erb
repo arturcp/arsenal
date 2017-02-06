@@ -15,12 +15,12 @@
 <% campaign.items.each_with_index do |item, index| %>
   <section class="section-padding item-row-<%= index.even? ? 'even' : 'odd' %>">
     <div class="row">
-      <div class="col s2 relative">
+      <div class="col m2 hide-on-small-only relative">
         <span class="thermometer">
           <%= item.current_amount %>
         </span>
       </div>
-      <div class="col s8">
+      <div class="col s12 m6 l7" data-item-container>
         <h3><%= item.name %></h3>
         <p class="item-description">
           <%= item.description %>
@@ -31,12 +31,12 @@
           <b>Valor:</b> <%= number_to_currency(item.price) %>
         </p>
       </div>
-      <div class="col s2">
-        <div class="item-data">
+      <div class="col s12 m4 l3">
+        <div class="item-data text-center">
           <%= image_tag item.image_url, class: 'thumbnail' %>
-          <%= form_tag checkout_path do %>
-            <%= hidden_field_tag 'id', item.id %>
-            <%= image_submit_tag "https://infoprodutosmega.files.wordpress.com/2016/09/pagar-com-pagseguro.jpg?w=145" %>
+          <%= form_tag shopping_cart_index_path do %>
+            <%= hidden_field_tag 'item[id]', item.id %>
+            <%= submit_tag 'Adicionar', class: 'primary-blue btn waves-effect waves-light' %>
           <% end %>
         </div>
       </div>

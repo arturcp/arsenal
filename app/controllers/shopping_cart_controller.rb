@@ -5,9 +5,7 @@ class ShoppingCartController < ApplicationController
 
   def index
     @campaign = Campaign.last
-    @shopping_cart = ShoppingCart.new(shopping_cart)
-    @shopping_cart.add(Item.first.id, 3)
-    @shopping_cart.add(Item.last.id, 1)
+    @shopping_cart ||= shopping_cart
 
     render :index, layout: 'landing'
   end
@@ -27,14 +25,17 @@ class ShoppingCartController < ApplicationController
   private
 
   def valid_params
-    params.require(:item).permit(:id, :quantity)
+    params.require(:item).permit(:id)
   end
 
   def set_item_id
-    @item_id = valid_params[:item][:id]
+    @item_id = valid_params[:id].to_i
   end
 
   def shopping_cart
-    session[:cart]
+    @cart ||= begin
+      session[:cart] = {} unless session[:cart]
+      ShoppingCart.new(session)
+    end
   end
 end

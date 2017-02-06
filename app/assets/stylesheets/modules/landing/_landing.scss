@@ -1149,3 +1149,12 @@ KEY FRAME
 .text-black {
   color: #000;
 }
+
+.primary-blue {
+  background-color: $landing-primary;
+  color: #fff;
+}
+
+[data-item-container] {
+  padding-left: 20px !important;
+}

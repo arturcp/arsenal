@@ -1,46 +1,21 @@
 class CheckoutsController < ApplicationController
-  skip_before_filter :verify_authenticity_token
-
   def create
-    # order = Order.find(params[:id])
-    item = Item.find(params[:id])
-
+    cart = ShoppingCart.new(session[:cart])
     payment = PagSeguro::PaymentRequest.new
+    payment.credentials = PagSeguro::AccountCredentials.new(ENV.fetch('PAGSEGURO_EMAIL'), ENV.fetch('PAGSEGURO_TOKEN'))
 
-    payment.credentials = PagSeguro::AccountCredentials.new('artur.prado@gmail.com', '4FB6532320FC4176B4D97453B54C1F09')
-
-    payment.reference = item.id.to_s
+    payment.reference = SecureRandom.uuid
     payment.notification_url = 'https://youse-remembrall.herokuapp.com'
     payment.redirect_url = 'https://youse-remembrall.herokuapp.com'
 
-    # order.products.each do |product|
-      # payment.items << {
-      #   id: 1,
-      #   description: 'dscription',
-      #   amount: 0.01,
-      #   weight: 2
-      # }
-    # end
-
-    payment.items << {
-      id: item.id,
-      description: item.description || 'Sem descrição',
-      amount: item.price
-    }
-
-    payment.sender = {
-      name: "John Joe",
-      email: "teste@teste.com.br",
-      document: { type: "CPF", value: "21639716866" },
-      phone: {
-        area_code: 11,
-        number: "12345678"
+    cart.items.each do |item|
+      payment.items << {
+        id: item.id,
+        quantity: item.current_amount,
+        description: item.name,
+        amount: item.price
       }
-    }
-
-    # payment.extra_params << { paramName: 'paramValue' }
-    # payment.extra_params << { senderBirthDate: '07/05/1981' }
-    # payment.extra_params << { extraAmount: '-15.00' }
+    end
 
     response = payment.register
 
