@@ -4,18 +4,22 @@
   </div>
 
   <div class="col s12 m8">
-    <div class="row price-line">
+    <div class="row price-line" data-item-id="<%= item.id %>" data-item-price="<%= item.price %>">
       <div class="col s3"><b><%= item.name %></b></div>
       <div class="col s3"><%= number_to_currency(item.price) %> x</div>
       <div class="col s3">
-        <%= number_field_tag "amount_item_#{item.id}", item.current_amount, class: 'shopping-cart__item-counter' %>
+        <%= number_field_tag "items[#{item.id}]", item.current_amount, class: 'shopping-cart__item-counter', min: 1 %>
       </div>
-      <div class="col s3">= <%= number_to_currency(item.price * item.current_amount) %></div>
+      <div class="col s3" data-product-price>= <%= number_to_currency(item.price * item.current_amount) %></div>
     </div>
 
     <div class="row">
       <div class="col s9 text-justify"><%= item.description %></div>
-      <div class="col s3"><a href="#">Remover</a></div>
+      <div class="col s3">
+        <%= form_tag shopping_cart_path(item), method: :delete do %>
+          <%= submit_tag 'Remover', class: 'remove-product-button red lighten-1 btn waves-effect waves-light' %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

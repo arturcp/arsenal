@@ -1,4 +1,6 @@
 class CheckoutsController < ApplicationController
+  before_action :save_cart_state, only: :create
+
   def create
     payment = PagSeguro::PaymentRequest.new
     payment.credentials = PagSeguro::AccountCredentials.new(ENV.fetch('PAGSEGURO_EMAIL'), ENV.fetch('PAGSEGURO_TOKEN'))
@@ -15,7 +17,6 @@ class CheckoutsController < ApplicationController
         amount: item.price
       }
     end
-
 
     response = payment.register
 

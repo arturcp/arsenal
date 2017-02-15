@@ -6,16 +6,16 @@
         <div class="card-content">
           <div class="row">
             <div class="col s6">
-              <p>
+              <p data-products-count>
                 Você escolheu <b><%= pluralize(@shopping_cart.total, 'item', 'itens') %></b>
               </p>
-              <p>
+              <p data-total-price>
                 Valor Total: <b><%= number_to_currency(@shopping_cart.price) %></b>
               </p>
             </div>
             <div class="col s6 text-center">
               <%= form_tag checkout_path do %>
-                <%= hidden_field_tag 'id', 1 %>
+                <%= hidden_field_tag 'id', campaign.id %>
                 <%= submit_tag 'Comprar', class: 'primary-blue btn waves-effect waves-light' %>
               <% end %>
             </div>

@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
       ShoppingCart.new(session)
     end
   end
+
+  def save_cart_state
+    # TODO: save cart data on the session
+  end
 end

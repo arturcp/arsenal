@@ -1,5 +1,7 @@
 <nav id="shopping-cart__header">
     <div class="nav-wrapper">
-      <h1><%= campaign.title %></h1>
+      <h1>
+        <%= link_to campaign.title, landing_page_path(campaign) %>
+      </h1>
     </div>
   </nav>

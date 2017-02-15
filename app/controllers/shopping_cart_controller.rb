@@ -1,7 +1,8 @@
 class ShoppingCartController < ApplicationController
   include ApplicationHelper
 
-  before_action :set_item_id, only: [:create, :destroy]
+  before_action :set_item_id, only: :create
+  before_action :save_cart_state, only: :destroy
 
   def index
     @campaign = Campaign.last
@@ -17,7 +18,7 @@ class ShoppingCartController < ApplicationController
   end
 
   def destroy
-    shopping_cart.add(@item_id)
+    shopping_cart.remove(params[:id])
 
     redirect_to shopping_cart_index_path
   end

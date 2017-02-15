@@ -35,3 +35,30 @@
   height: 130px;
   margin: 0 auto;
 }
+
+.remove-product-button {
+  height: 40px;
+  padding: 6px 5px;
+}
+
+#shopping-cart__header a:focus,
+#shopping-cart__header a:hover {
+  color: #fff;
+}
+
+.empty-cart {
+  padding: 20px;
+  margin: 0 251px;
+  text-align: center;
+  color: #000;
+}
+
+.back-button {
+  width: 56px;
+  height: 56px;
+  padding-top: 7px;
+
+  i {
+    font-size: 30px;
+  }
+}
