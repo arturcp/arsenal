@@ -28,7 +28,8 @@ class CheckoutsController < ApplicationController
         items: payment.items
       )
 
-      reset_session
+      # TODO: move the reset_session to the response.url
+      # reset_session
       redirect_to response.url
     end
   end

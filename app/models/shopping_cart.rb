@@ -2,6 +2,7 @@ class ShoppingCart
   attr_reader :cart
 
   def initialize(session)
+    @session = session
     @cart = session[:cart] || {}
   end
 
@@ -34,5 +35,16 @@ class ShoppingCart
 
       item
     end
+  end
+
+  def build_from_params(params)
+    @cart = {}
+
+    hash = JSON.parse(params[:items])
+    hash.each do |item_id, data|
+      add(item_id, data['quantity'].to_i)
+    end
+
+    @session[:cart] = @cart
   end
 end

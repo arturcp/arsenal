@@ -17,7 +17,8 @@
       <div class="col s9 text-justify"><%= item.description %></div>
       <div class="col s3">
         <%= form_tag shopping_cart_path(item), method: :delete do %>
-          <%= submit_tag 'Remover', class: 'remove-product-button red lighten-1 btn waves-effect waves-light' %>
+          <%= hidden_field_tag 'items', '', data: { hidden_items: true } %>
+          <%= submit_tag 'Remover', class: 'remove-product-button red lighten-1 btn waves-effect waves-light', data: { checkout_delete_button: true } %>
         <% end %>
       </div>
     </div>

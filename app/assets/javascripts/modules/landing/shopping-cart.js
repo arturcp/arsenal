@@ -3,6 +3,8 @@ define('shopping-cart', [], function() {
     this.productsCount = $('[data-products-count]');
     this.totalPrice = $('[data-total-price]');
     this.itemCounter = $('.shopping-cart__item-counter');
+    this.checkoutSubmit = $('[data-checkout-submit]');
+    this.checkoutRemoveButton = $('[data-checkout-delete-button]');
     this.items = {}
 
     this._buildCart();
@@ -28,6 +30,8 @@ define('shopping-cart', [], function() {
 
   fn._bindEvents = function() {
     this.itemCounter.on('keyup mouseup', this._changeItemPrice.bind(this));
+    this.checkoutSubmit.on('click', this._recountProducts.bind(this));
+    this.checkoutRemoveButton.on('click', this._recountProducts.bind(this));
   };
 
   fn._changeItemPrice = function(e) {
@@ -37,7 +41,7 @@ define('shopping-cart', [], function() {
 
     this.items[id].quantity = parseFloat(element.val());
 
-    container.find('[data-product-price]').html('R$ ' + this.items[id].quantity * this.items[id].price);
+    container.find('[data-product-price]').html('= R$ ' + this._formatMoney(this.items[id].quantity * this.items[id].price).replace('.', ','));
 
     this._recalculateCheckoutInfo();
   };
@@ -55,7 +59,23 @@ define('shopping-cart', [], function() {
     var complement = count == 1 ? 'item' : 'items';
 
     this.productsCount.html('Você escolheu <b>' + count + ' ' + complement + '</b>');
-    this.totalPrice.html('Valor Total: <b>R$ ' + price + '</b>');
+    this.totalPrice.html('Valor Total: <b>R$ ' + this._formatMoney(price) + '</b>');
+  };
+
+  fn._formatMoney = function(value) {
+    return parseFloat(Math.round(value * 100) / 100).toFixed(2);
+  }
+
+  fn._recountProducts = function(e) {
+    e.preventDefault();
+
+    this._buildCart();
+
+    var form = $(e.currentTarget).parents('form'),
+        hidden = form.find('[data-hidden-items]');
+
+    $(hidden).val(JSON.stringify(this.items));
+    form.submit();
   };
 
   return ShoppingCart;

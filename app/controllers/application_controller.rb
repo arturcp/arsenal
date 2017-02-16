@@ -11,6 +11,6 @@ class ApplicationController < ActionController::Base
   end
 
   def save_cart_state
-    # TODO: save cart data on the session
+    shopping_cart.build_from_params(params)
   end
 end

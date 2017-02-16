@@ -15,8 +15,8 @@
             </div>
             <div class="col s6 text-center">
               <%= form_tag checkout_path do %>
-                <%= hidden_field_tag 'id', campaign.id %>
-                <%= submit_tag 'Comprar', class: 'primary-blue btn waves-effect waves-light' %>
+                <%= hidden_field_tag 'items', '', data: { hidden_items: true } %>
+                <%= submit_tag 'Comprar', class: 'primary-blue btn waves-effect waves-light', data: { checkout_submit: true } %>
               <% end %>
             </div>
           </div>
