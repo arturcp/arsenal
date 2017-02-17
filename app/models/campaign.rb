@@ -11,7 +11,7 @@ class Campaign < ApplicationRecord
   end
 
   def types
-    ['Termômetro', 'Pirâmide']
+    ['Termômetro', 'Progresso circular']
   end
 
   def target_value

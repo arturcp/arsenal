@@ -25,9 +25,14 @@
   <section class="section-padding item-row-<%= index.even? ? 'even' : 'odd' %>">
     <div class="row">
       <div class="col m2 hide-on-small-only relative">
+        <% if @campaign.campaign_type == 0 %>
         <span class="thermometer">
           <%= item.current_amount %>
         </span>
+        <% else %>
+          <% percentage = (item.current_amount * 100 / item.target).ceil %>
+          <div class="progress-circle progress-<%= percentage %>"><span><%= percentage %></span></div>
+        <% end %>
       </div>
       <div class="col s12 m6 l7" data-item-container>
         <h3><%= item.name %></h3>
