@@ -10,7 +10,16 @@
     </div>
 
     <h1 class="text-center">Ajude nosso projeto a acontecer!</h1>
+
 </section>
+
+<div class="row">
+  <div class="col s12 text-center">
+    <%= link_to shopping_cart_index_path, class: 'waves-effect waves-light btn shopping-cart__button green' do %>
+      <i class="fa fa-shopping-cart"></i> Carrinho de compras
+    <% end %>
+  </div>
+</div>
 
 <% campaign.items.each_with_index do |item, index| %>
   <section class="section-padding item-row-<%= index.even? ? 'even' : 'odd' %>">
