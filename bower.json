@@ -15,9 +15,13 @@
     "tests"
   ],
   "dependencies": {
+    "jquery": "2.1.4",
+    "jquery-ujs": "1.1.0",
     "waypoints": "^4.0.1",
     "magnific-popup": "^1.1.0",
     "goalProgress.js": "goalProgress#*",
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "page": "lucasmazza/page.js#^1.1.0",
+    "almond": "^0.3.3"
   }
 }

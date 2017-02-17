@@ -1,0 +1,21 @@
+<%= render 'checkout_header', campaign: @campaign %>
+
+<h1 class="shopping-cart__title text-center">Carrinho de compras</h1>
+
+<% if @shopping_cart.items.empty? %>
+  <div class="card-panel purple lighten-5 empty-cart">Seu carrinho está vazio :(</div>
+
+  <div class="row text-center padding-top-50">
+    <%= link_to landing_page_path(@campaign), class: 'waves-effect waves-light btn primary-blue' do %>
+      <i class="fa fa-home"></i> Voltar e continuar comprando
+    <% end %>
+  </div>
+<% else %>
+  <% @shopping_cart.items.each do |item| %>
+    <%= render 'checkout_item', item: item %>
+  <% end %>
+
+  <%= render 'checkout_info', shopping_cart: @shopping_cart, campaign: @campaign %>
+<% end %>
+
+<%= render 'back_button' %>

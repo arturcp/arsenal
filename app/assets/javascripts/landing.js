@@ -11,10 +11,17 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
+//= require jquery-ujs
 //= require turbolinks
 //= require materialize
 //= require waypoints/lib/jquery.waypoints
 //= require magnific-popup
 //= require goalProgress.js/goalProgress
+//= require page
+//= require almond
+//= require_tree ./pages
 //= require_tree ./modules/landing
+
+$(document).on('ready page:load', function() {
+  page.dispatch();
+});
