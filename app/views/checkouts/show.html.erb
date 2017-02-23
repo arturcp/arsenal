@@ -1,0 +1,30 @@
+<section class="section-padding">
+  <div class="row">
+
+    <div class="col s6 offset-s3">
+      <h2 class="header text-center">Sua ajuda é fundamental para nós!</h2>
+      <div class="card checkout-card">
+        <p>
+          Graças a você demos um passo a mais rumo ao nosso objetivo. Agradecemos de
+          coração por tudo o que tem feito por nós e pela comunidade. Aqui estão alguns
+          dados da compra que você acabou de fazer:
+        </p>
+
+        <strong>Referência: </strong> <%= @order.reference %><br />
+        <strong>Itens: </strong>
+
+        <ul class="checkout-card__items">
+          <% @order.items.each do |item| %>
+            <li>
+              <%= item['quantity'] %> x <%= item['description'] %> = <%= number_to_currency(item['quantity'] * item['amount'].to_f) %>
+            </li>
+          <% end %>
+        </ul>
+        <strong>Total: </strong><%= number_to_currency(@order.price) %>
+      </div>
+      <%= link_to landing_page_path(@campaign), class: 'waves-effect waves-light btn primary-blue' do %>
+        <i class="fa fa-home"></i> Voltar
+      <% end %>
+    </div>
+  </div>
+</section>

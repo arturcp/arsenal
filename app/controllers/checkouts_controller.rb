@@ -1,13 +1,21 @@
 class CheckoutsController < ApplicationController
   before_action :save_cart_state, only: :create
+  after_action :clear_shopping_cart, only: :show
+
+  def show
+    @order = Order.find(params[:id])
+    @campaign = Campaign.find(shopping_cart.items.first.campaign_id)
+
+    render :show, layout: 'landing'
+  end
 
   def create
     payment = PagSeguro::PaymentRequest.new
     payment.credentials = PagSeguro::AccountCredentials.new(ENV.fetch('PAGSEGURO_EMAIL'), ENV.fetch('PAGSEGURO_TOKEN'))
 
     payment.reference = SecureRandom.uuid
-    payment.notification_url = 'https://youse-remembrall.herokuapp.com'
-    payment.redirect_url = 'https://youse-remembrall.herokuapp.com'
+    payment.notification_url =  ENV.fetch('NOTIFICATION_URL')
+    payment.redirect_url = "#{ENV.fetch('REDIRECT_URL')}/#{payment.reference}"
 
     shopping_cart.items.each do |item|
       payment.items << {
@@ -25,12 +33,17 @@ class CheckoutsController < ApplicationController
     else
       order = Order.create!(
         reference: payment.reference,
-        items: payment.items
+        items: payment.items,
+        price: shopping_cart.total
       )
 
-      # TODO: move the reset_session to the response.url
-      # reset_session
       redirect_to response.url
     end
+  end
+
+  private
+
+  def clear_shopping_cart
+    reset_session
   end
 end

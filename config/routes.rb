@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get 'campanha/:campaign_id', to: 'items#index', as: 'landing_page'
 
-  resource :checkout, only: :create
+  resources :checkouts, only: [:create, :show]
+  resource :notifications, only: :create
   get 'admin', to: redirect('/admin/campaigns')
 end
