@@ -14,8 +14,6 @@ class CheckoutsController < ApplicationController
     payment.credentials = PagSeguro::AccountCredentials.new(ENV.fetch('PAGSEGURO_EMAIL'), ENV.fetch('PAGSEGURO_TOKEN'))
 
     payment.reference = SecureRandom.uuid
-    payment.notification_url =  ENV.fetch('NOTIFICATION_URL')
-    payment.redirect_url = "#{ENV.fetch('REDIRECT_URL')}/#{payment.reference}"
 
     shopping_cart.items.each do |item|
       payment.items << {
