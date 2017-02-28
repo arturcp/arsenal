@@ -11,7 +11,7 @@ urls.
 To run ngrok:
 
 ```
-./Applications/ngrok http 80
+/Applications/ngrok http 80
 ```
 
 Copy the forwarding url it will print on the terminal and add them in your .env
