@@ -35,3 +35,9 @@ christmas.items.create!(
   price: 70.0,
   current_amount: 40
 )
+
+User.create!(
+  email: 'marco@arsenal.com.br',
+  name: 'Marco',
+  password: '12345678'
+)

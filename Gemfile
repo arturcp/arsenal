@@ -12,6 +12,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
+gem 'devise'
+
 # Front end gems
 gem 'materialize-sass'
 gem 'font-awesome-rails'

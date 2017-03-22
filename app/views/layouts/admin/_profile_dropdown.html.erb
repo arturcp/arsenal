@@ -16,8 +16,8 @@
   </li>
   <li class="divider"></li>
   <li>
-    <a href="#">
-      <i class="fa fa-sign-out"></i>
-      Sair</a>
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <i class="fa fa-sign-out"></i> Sair
+    <% end %>
   </li>
 </ul>

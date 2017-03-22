@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Arsenal</title>
+    <title>Login</title>
     <%= csrf_meta_tags %>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -19,18 +19,28 @@
   <body>
     <%= render 'layouts/admin/header' %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice || alert %>
+      <ul class="devise-collection collection">
+        <% if notice %>
+          <li class="collection-item"><%= notice %></li>
+        <% end %>
+        <% if alert %>
+          <li class="collection-item"><%= alert %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>&nbsp;</p>
+    <% end %>
 
-    <div id="main">
-      <div class="wrapper">
-        <%= render 'layouts/admin/slide_menu' %>
-
-        <section id="content">
-          <div class="container">
-            <%= yield %>
-          </div>
-        </section>
+    <div class="row">
+      <div class="col s4 offset-s4">
+        <div class="wrapper">
+          <section id="login-content">
+            <div class="container">
+              <%= yield %>
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   </body>
