@@ -18,7 +18,8 @@ CDN_IMAGES = {
   wine: 'vinho.jpg'
 }
 
-CDN = 'http://localhost:8000/'
+# CDN = 'http://localhost:8000/'
+CDN = nil
 
 def image_for(key)
   CDN.present? ? URI::join(CDN, CDN_IMAGES[key]) : IMAGES[key]
