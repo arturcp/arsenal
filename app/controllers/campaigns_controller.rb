@@ -1,5 +1,6 @@
 class CampaignsController < ApplicationController
   before_action :set_campaign, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
   layout 'admin'
 
   # GET /campaigns
@@ -68,6 +69,6 @@ class CampaignsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def campaign_params
-    params.require(:campaign).permit(:name, :description, :start_date, :end_date, :campaign_type)
+    params.require(:campaign).permit(:name, :description, :start_date, :end_date, :campaign_type, :title, :subtitle, :main_image_url, :video_url)
   end
 end
