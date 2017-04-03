@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
   private
 
   def valid_params
-    params.require(:item).permit(:campaign_id, :name, :image_url, :price)
+    params.require(:item).permit(:campaign_id, :name, :image_url, :price, :target)
   end
 
   def set_campaign
