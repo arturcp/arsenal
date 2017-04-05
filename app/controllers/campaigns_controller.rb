@@ -69,6 +69,10 @@ class CampaignsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def campaign_params
-    params.require(:campaign).permit(:name, :description, :start_date, :end_date, :campaign_type, :title, :subtitle, :main_image_url, :video_url)
+    params[:campaign].merge!(start_date: params[:start_date], end_date: params[:end_date])
+
+    params.require(:campaign).permit(:name, :description, :start_date, :end_date,
+      :campaign_type, :title, :subtitle, :main_image_url, :video_url
+    )
   end
 end
