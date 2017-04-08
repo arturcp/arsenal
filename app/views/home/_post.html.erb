@@ -1,0 +1,19 @@
+<div class="post-wrapper wow fadeIn" data-wow-delay="0.2s">
+  <h1 class="h1-responsive"><%= title %> <small class="text-muted"><%= subtitle %></small></h1>
+  <h5>Written by <a href=""><%= author %></a>, <%= created_at %></h5>
+  <br>
+
+  <div class="view overlay hm-white-light z-depth-1-half">
+    <%= image_tag image_url, class: 'img-fluid' %>
+
+    <div class="mask">
+    </div>
+  </div>
+  <br>
+
+  <p><%= excerpt %></p>
+
+  <button class="btn btn-info">Read more</button>
+</div>
+
+<hr>
