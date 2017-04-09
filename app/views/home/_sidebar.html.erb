@@ -1,10 +1,10 @@
 <div class="col-lg-4">
-  <% if @campaigns %>
+  <% if active_campaigns %>
     <div class="widget-wrapper wow fadeIn" data-wow-delay="0.4s">
-      <h4>Campanhas ativas:</h4>
+      <h4>Nossas campanhas:</h4>
       <br>
       <div class="list-group">
-        <% @campaigns.each do |campaign| %>
+        <% active_campaigns.each do |campaign| %>
           <%= link_to campaign.name, landing_page_path(campaign), class: 'list-group-item' %>
         <% end %>
       </div>
@@ -31,4 +31,16 @@
       </div>
     </div>
   </div>
+
+  <% if inactive_campaigns %>
+    <div class="widget-wrapper wow fadeIn" data-wow-delay="0.4s">
+      <h4>Campanhas encerradas:</h4>
+      <br>
+      <div class="list-group">
+        <% inactive_campaigns.each do |campaign| %>
+          <%= link_to campaign.name, landing_page_path(campaign), class: 'list-group-item' %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>

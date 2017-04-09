@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
   before_action :set_campaign, only: [:create, :index]
-  before_action :authenticate_user!
 
   def index
     render :index, layout: 'landing'

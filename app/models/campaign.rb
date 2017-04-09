@@ -3,8 +3,17 @@ class Campaign < ApplicationRecord
 
   validates :name, presence: true
 
+  scope :to_display, -> { where(display: true) }
+  scope :opened, ->(current_date = Time.zone.now) do
+    where("? >= start_date AND ? <= end_date", current_date.beginning_of_day, current_date.end_of_day)
+  end
+
+  scope :closed, ->(current_date = Time.zone.now) do
+    where("? < start_date OR ? > end_date", current_date.beginning_of_day, current_date.end_of_day)
+  end
+
   TERMOMETER = 0
-  PYRAMID = 1
+  CIRCULAR_PROGRESS = 1
 
   def type_text
     types[self.campaign_type]

@@ -27,7 +27,8 @@
 
         <%= render 'pagination' %>
       </div>
-      <%= render 'sidebar' %>
+
+      <%= render 'sidebar', active_campaigns: @active_campaigns, inactive_campaigns: @inactive_campaigns %>
     </div>
   </div>
 </main>
