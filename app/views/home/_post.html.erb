@@ -1,19 +1,23 @@
 <div class="post-wrapper wow fadeIn" data-wow-delay="0.2s">
-  <h1 class="h1-responsive"><%= title %> <small class="text-muted"><%= subtitle %></small></h1>
-  <h5>Written by <a href=""><%= author %></a>, <%= created_at %></h5>
+  <h1 class="h1-responsive"><%= post.title %></h1>
+  <h5>Publicado em <%= post.created_at.strftime("%d/%m/%Y") %></h5>
   <br>
 
   <div class="view overlay hm-white-light z-depth-1-half">
-    <%= image_tag image_url, class: 'img-fluid' %>
+    <% if post.main_image_url.present? %>
+      <%= image_tag post.main_image_url, class: 'img-fluid'  %>
 
-    <div class="mask">
-    </div>
+      <div class="mask"></div>
+    <% end %>
   </div>
   <br>
 
-  <p><%= excerpt %></p>
+  <p><%= raw(post.description) %></p>
 
-  <button class="btn btn-info">Read more</button>
+  <% if post.body.present? %>
+    <%= link_to home_path(post) do %>
+      <button class="btn btn-info btn-home">Leia mais</button>
+    <% end %>
+  <% end %>
 </div>
-
 <hr>

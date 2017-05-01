@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resource :notifications, only: :create
   get 'admin', to: redirect('/admin/campaigns')
 
-  resources :home, only: :index
+  resources :home, only: [:index, :show]
 
   root to: "home#index"
 end

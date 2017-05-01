@@ -4,28 +4,13 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8">
-        <%=
-          render 'post', title: 'Post title', subtitle: 'Secondary text',
-            author: 'John Doe', created_at: '30.04.2016',
-            image_url: 'http://mdbootstrap.com/img/Photos/Slides/img%20(116).jpg',
-            excerpt: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, officia omnis. Vero nihil neque dignissimos hic voluptas quisquam amet porro, similique libero ullam veritatis tempora cumque voluptates harum. Repellendus, impedit.'
-        %>
+        <% @articles.each do |article| %>
+          <%= render 'post', post: article %>
+        <% end %>
 
-        <%=
-          render 'post', title: 'Post title', subtitle: 'Secondary text',
-            author: 'John Doe', created_at: '30.04.2016',
-            image_url: 'http://mdbootstrap.com/img/Photos/Slides/img%20(127).jpg',
-            excerpt: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, officia omnis. Vero nihil neque dignissimos hic voluptas quisquam amet porro, similique libero ullam veritatis tempora cumque voluptates harum. Repellendus, impedit.'
-        %>
-
-        <%=
-          render 'post', title: 'Post title', subtitle: 'Secondary text',
-            author: 'John Doe', created_at: '30.04.2016',
-            image_url: 'http://mdbootstrap.com/img/Photos/Slides/img%20(128).jpg',
-            excerpt: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, officia omnis. Vero nihil neque dignissimos hic voluptas quisquam amet porro, similique libero ullam veritatis tempora cumque voluptates harum. Repellendus, impedit.'
-        %>
-
-        <%= render 'pagination' %>
+        <% if @articles.count > Article.per_page %>
+          <%= render 'pagination', articles: @articles %>
+        <% end %>
       </div>
 
       <%= render 'sidebar', active_campaigns: @active_campaigns, inactive_campaigns: @inactive_campaigns %>

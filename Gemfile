@@ -13,10 +13,12 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
+gem 'will_paginate', '~> 3.1.0'
 
 # Front end gems
 gem 'materialize-sass'
 gem 'font-awesome-rails'
+gem 'ckeditor'
 
 # Payments
 gem 'pagseguro-oficial', '~> 2.5.0'

@@ -1,0 +1,27 @@
+<%= render 'navbar' %>
+
+<main>
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="post-wrapper wow fadeIn" data-wow-delay="0.2s">
+          <h1 class="h1-responsive"><%= @article.title %></h1>
+          <h5>Publicado em <%= @article.created_at.strftime("%d/%m/%Y") %></h5>
+          <br>
+
+          <p><%= raw(@article.body) %></p>
+
+          <%= link_to home_index_path do %>
+            <button class="btn btn-info btn-home">Voltar</button>
+          <% end %>
+        </div>
+      </div>
+
+      <%= render 'sidebar', active_campaigns: @active_campaigns, inactive_campaigns: @inactive_campaigns %>
+    </div>
+
+  </div>
+</main>
+
+<%= render 'footer' %>

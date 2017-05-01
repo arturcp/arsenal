@@ -1,4 +1,7 @@
-<nav>
+<nav class="home-pagination">
+  <%= will_paginate(articles, renderer: WillPaginateRenderers::ListRenderer) %>
+<!--
+
   <ul class="pagination flex-center pg-dark  wow fadeIn" data-wow-delay="0.2s">
     <li class="page-item">
       <a class="page-link" aria-label="Previous">
@@ -19,5 +22,5 @@
       <span class="sr-only">Next</span>
       </a>
     </li>
-  </ul>
+  </ul> -->
 </nav>
