@@ -34,7 +34,10 @@ class CheckoutsController < ApplicationController
       order = Order.create!(
         reference: payment.reference,
         items: payment.items,
-        price: shopping_cart.total
+        price: shopping_cart.total,
+        name: params[:name],
+        email: params[:email],
+        comments: params[:comments]
       )
 
       redirect_to response.url

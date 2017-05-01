@@ -15,7 +15,9 @@
     <%= render 'checkout_item', item: item %>
   <% end %>
 
-  <%= render 'checkout_info', shopping_cart: @shopping_cart, campaign: @campaign %>
+  <%= form_tag checkouts_path do %>
+    <%= render 'checkout_action', shopping_cart: @shopping_cart, campaign: @campaign %>
+  <% end %>
 <% end %>
 
 <%= render 'back_button' %>
