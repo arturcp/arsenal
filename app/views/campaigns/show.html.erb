@@ -92,7 +92,8 @@
           <tr>
             <th>Nome</th>
             <th>Imagem</th>
-            <th>Esperado</th>
+            <th>Venda esperada</th>
+            <th>Itens vendidos</th>
             <th>Preço</th>
             <th></th>
           </tr>
@@ -104,6 +105,7 @@
               <td><%= item.name %></td>
               <td><%= image_tag(item.image_url, class: 'item__image-thumbnail') %></td>
               <td><%= item.target %></td>
+              <td><%= item.current_amount %></td>
               <td><%= number_to_currency(item.price) %></td>
               <td>
                 <%= link_to item, method: :delete, data: { confirm: 'Tem certeza?' } do %>
