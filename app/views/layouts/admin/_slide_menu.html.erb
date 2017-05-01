@@ -22,10 +22,16 @@
         <i class="fa fa-calendar"></i>
         Calendário</a>
     </li> -->
-    <li class="bold active">
+    <li class="bold <%= "active" if @current_tab == 'campaigns' %>">
       <%= link_to campaigns_path, class: 'waves-effect waves-cyan' do %>
         <i class="fa fa-folder-open"></i>
         Campanhas
+      <% end %>
+    </li>
+    <li class="bold <%= "active" if @current_tab == 'articles' %>">
+      <%= link_to articles_path, class: 'waves-effect waves-cyan' do %>
+        <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+        Notícias
       <% end %>
     </li>
     <!-- <li class="bold">

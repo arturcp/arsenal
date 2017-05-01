@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   scope 'admin' do
     resources :campaigns
     resources :items, only: [:create, :destroy]
+    resources :articles
   end
 
   resources :shopping_cart, only: [:index, :create, :destroy]

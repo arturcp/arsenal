@@ -1,5 +1,6 @@
 class CampaignsController < ApplicationController
   before_action :set_campaign, only: [:show, :edit, :update, :destroy]
+  before_action :set_current_tab
   before_action :authenticate_user!
   layout 'admin'
 
@@ -65,6 +66,10 @@ class CampaignsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_campaign
     @campaign = Campaign.find(params[:id])
+  end
+
+  def set_current_tab
+    @current_tab = 'campaigns'
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
