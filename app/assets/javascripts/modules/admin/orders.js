@@ -10,12 +10,9 @@ define('orders', [], function() {
   };
 
   fn._toggleDescription = function() {
-    var reference = $(this).data('reference'),
-        descriptionContainer = $('#order-description-' + reference),
-        parentBackgroundColor = $(this).parent().parent().css('background-color');
+    var reference = $(this).data('reference');
 
-    descriptionContainer.css('background-color', parentBackgroundColor)
-    descriptionContainer.toggle('slow');
+    $('#order-description-' + reference).toggle('slow');
   };
 
   return Orders;

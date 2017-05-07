@@ -5,7 +5,6 @@
       <table class="striped">
         <thead>
           <tr>
-            <th>Código</th>
             <th>Nome</th>
             <th>Email</th>
             <th>Produtos</th>
@@ -18,7 +17,6 @@
         <tbody>
           <% campaign.orders.each do |order| %>
             <tr>
-              <td><%= order.reference %></td>
               <td><%= order.name %></td>
               <td><%= order.email %></td>
               <td>
@@ -40,7 +38,14 @@
             <tr class="order-description" id="order-description-<%= order.reference %>">
               <td colspan="7">
                 <div>
-                  Descrição marota
+                  <p><b>Código de referência:</b> <br /> <%= order.reference %></p><b></b>
+                  <% if order.comments %>
+                    <p>
+                      <b>Comentário do usuário:</b> <br /> <%= order.comments %>
+                    </p>
+                  <% end %>
+                  <p>&nbsp;</p>
+                  <p>Compra efetuada em <%= order.created_at.strftime('%d/%m/%Y %H:%M') %>h</p>
                 </div>
               </td>
             </tr>
