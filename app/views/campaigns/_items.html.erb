@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col s12">
+    <div class="card-panel">
+      <h4 class="header2">Itens cadastrados</h4>
+      <table class="striped">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Imagem</th>
+            <th>Venda esperada</th>
+            <th>Itens vendidos</th>
+            <th>Preço</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% campaign.items.each do |item| %>
+            <tr>
+              <td><%= item.name %></td>
+              <td><%= image_tag(item.image_url, class: 'item__image-thumbnail') %></td>
+              <td><%= item.target %></td>
+              <td><%= item.current_amount %></td>
+              <td><%= number_to_currency(item.price) %></td>
+              <td>
+                <%= link_to item, method: :delete, data: { confirm: 'Tem certeza?' } do %>
+                  <i class="fa fa-times"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

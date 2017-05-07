@@ -3,3 +3,9 @@ page.at('campaigns#index campaigns#edit', function() {
 
   new Calendar('.datepicker');
 });
+
+page.at('campaigns#show', function() {
+  var Orders = require('orders');
+
+  new Orders();
+});
