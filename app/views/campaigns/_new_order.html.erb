@@ -1,0 +1,30 @@
+<div id="new-order-modal" class="modal">
+  <div class="modal-content">
+    <h4>Compra manual</h4>
+
+    <input type="hidden" value="<%= campaign.id %>" id="campaign_id" />
+    <div class="row">
+      <div class="input-field col s6">
+        <%= label_tag 'Comprado por' %>
+        <%= text_field_tag 'new-purchase-name', 'administrador', disabled: true %>
+      </div>
+      <div class="input-field col s6">
+        <%= label_tag 'Quantidade' %>
+        <%= number_field_tag 'new-purchase-quantity', '1' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <%= select_tag 'new-purchase-items', options_for_select(items_for_select(campaign)) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <%= link_to 'javascript:;' do %>
+      <%= button_tag 'Finalizar compra', class: 'btn save-button waves-effect waves-light right',
+        data: { manual_purchase: true, new_purchase_url: orders_path } %>
+    <% end %>
+  </div>
+</div>

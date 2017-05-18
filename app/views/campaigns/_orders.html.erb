@@ -2,7 +2,7 @@
   <div class="col s12">
     <div class="card-panel">
       <h4 class="header2">Compras</h4>
-      <table class="striped">
+      <table class="striped" data-orders-list>
         <thead>
           <tr>
             <th>Nome</th>
@@ -16,39 +16,7 @@
 
         <tbody>
           <% campaign.orders.each do |order| %>
-            <tr>
-              <td><%= order.name %></td>
-              <td><%= order.email %></td>
-              <td>
-                <ul>
-                  <% order.items.each do |item| %>
-                    <li><%= item['quantity'] %> <%= item['description'] %> = <%= number_to_currency(item['amount']) %></li>
-                  <% end %>
-                </ul>
-              </td>
-              <td><%= number_to_currency(order.price) %></td>
-              <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
-              <td>
-                <%= link_to 'javascript:;', data: { reference: order.reference } do %>
-                  <i class="fa fa-eye"></i>
-                <% end %>
-              </td>
-            </tr>
-
-            <tr class="order-description" id="order-description-<%= order.reference %>">
-              <td colspan="7">
-                <div>
-                  <p><b>Código de referência:</b> <br /> <%= order.reference %></p><b></b>
-                  <% if order.comments %>
-                    <p>
-                      <b>Comentário do usuário:</b> <br /> <%= order.comments %>
-                    </p>
-                  <% end %>
-                  <p>&nbsp;</p>
-                  <p>Compra efetuada em <%= order.created_at.strftime('%d/%m/%Y %H:%M') %>h</p>
-                </div>
-              </td>
-            </tr>
+            <%= render 'order_row', order: order %>
           <% end %>
         </tbody>
       </table>
@@ -56,4 +24,8 @@
   </div>
 </div>
 
-<%= button_tag 'Cadastrar nova compra', class: 'btn save-button waves-effect waves-light right' %>
+<%= link_to '#new-order-modal' do %>
+  <%= button_tag 'Cadastrar nova compra', class: 'btn save-button waves-effect waves-light right' %>
+<% end %>
+
+<%= render 'new_order', campaign: campaign %>

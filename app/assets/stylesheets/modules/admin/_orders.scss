@@ -5,3 +5,13 @@
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
 }
+
+#new-order-modal {
+  select {
+    display: block;
+  }
+}
+
+.fa-times {
+  color: #f00;
+}

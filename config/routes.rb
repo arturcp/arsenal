@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :campaigns
     resources :items, only: [:create, :destroy]
     resources :articles
+    resources :orders, only: [:create, :destroy]
   end
 
   resources :shopping_cart, only: [:index, :create, :destroy]
