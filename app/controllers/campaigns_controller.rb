@@ -77,7 +77,7 @@ class CampaignsController < ApplicationController
     params[:campaign].merge!(start_date: params[:start_date], end_date: params[:end_date])
 
     params.require(:campaign).permit(:name, :description, :start_date, :end_date,
-      :campaign_type, :title, :subtitle, :main_image_url, :video_url
+      :campaign_type, :title, :subtitle, :main_image_url, :video_url, :closing_text
     )
   end
 end

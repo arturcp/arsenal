@@ -55,19 +55,25 @@
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <%= f.label 'Data de início', class: label_class %>
+        <%= f.label 'Data de início', class: 'active' %>
         <%= f.date_field :start_date, name: 'start_date', class: 'datepicker' %>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <%= f.label 'Data de término', class: label_class %>
+        <%= f.label 'Data de término', class: 'active' %>
         <%= f.date_field :end_date, name: 'end_date', class: 'datepicker' %>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
         <%= f.select :campaign_type, f.object.types.collect.with_index { |type, index| [type, index] }, {}, class: 'campaign-type browser-default' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.label 'Texto de encerramento', class: label_class %>
+        <%= f.text_area :closing_text, class: 'materialize-textarea' %>
       </div>
     </div>
     <div class="row">
