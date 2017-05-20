@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery-ujs
-//= require turbolinks
 //= require materialize
 //= require waypoints/lib/jquery.waypoints
 //= require magnific-popup

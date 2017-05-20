@@ -8,6 +8,4 @@ page.at('campaigns#show', function() {
   var Orders = require('orders');
 
   new Orders();
-
-  
 });
