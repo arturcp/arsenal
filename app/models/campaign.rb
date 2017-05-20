@@ -35,4 +35,8 @@ class Campaign < ApplicationRecord
       sum += item.current_amount * item.price
     end
   end
+
+  def finished?
+    end_date < Time.zone.now
+  end
 end

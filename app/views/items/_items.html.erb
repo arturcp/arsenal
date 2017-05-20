@@ -13,13 +13,15 @@
 
 </section>
 
-<div class="row">
-  <div class="col s12 text-center">
-    <%= link_to shopping_cart_index_path, class: 'waves-effect waves-light btn shopping-cart__button green' do %>
-      <i class="fa fa-shopping-cart"></i> Carrinho de compras
-    <% end %>
+<% unless campaign.finished? %>
+  <div class="row">
+    <div class="col s12 text-center">
+      <%= link_to shopping_cart_index_path, class: 'waves-effect waves-light btn shopping-cart__button green' do %>
+        <i class="fa fa-shopping-cart"></i> Carrinho de compras
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>
 
 <% campaign.items.each_with_index do |item, index| %>
   <section class="section-padding item-row-<%= index.even? ? 'even' : 'odd' %>">
@@ -50,7 +52,9 @@
           <%= image_tag item.image_url, class: 'thumbnail' %>
           <%= form_tag shopping_cart_index_path do %>
             <%= hidden_field_tag 'item[id]', item.id %>
-            <%= submit_tag 'Adicionar', class: 'primary-blue btn waves-effect waves-light' %>
+            <% unless campaign.finished? %>
+              <%= submit_tag 'Adicionar', class: 'primary-blue btn waves-effect waves-light' %>
+            <% end %>
           <% end %>
         </div>
       </div>

@@ -2,4 +2,6 @@
 <%= render 'items', campaign: @campaign %>
 <%= render 'footer', campaign: @campaign %>
 
-<%= render 'modal' %>
+<% if @campaign.finished? %>
+  <%= render 'modal', campaign: @campaign %>
+<% end %>
