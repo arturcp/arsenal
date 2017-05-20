@@ -16,7 +16,7 @@
     <% end %>
     &nbsp;&nbsp;
     <% if order.name == 'administrador' %>
-      <%= link_to order, method: :delete, data: { confirm: 'Tem certeza?' } do %>
+      <%= link_to [:admin, order], method: :delete, data: { confirm: 'Tem certeza?' } do %>
         <i class="fa fa-times"></i>
       <% end %>
     <% end %>

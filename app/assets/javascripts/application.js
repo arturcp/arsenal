@@ -16,7 +16,6 @@
 //= require page
 //= require almond
 //= require_tree ./pages
-//= require_tree ./modules/home
 
 $(document).on('ready page:load', function() {
   page.dispatch();

@@ -14,23 +14,23 @@
           </thead>
 
           <tbody>
-            <% @campaigns.each do |campaign| %>
-              <tr>
+            <% @campaigns.sort_by {|c| c.finished?.to_s }.each do |campaign| %>
+              <tr class="<%= campaign.finished? ? 'finished-campaign' : '' %>">
                 <td><%= campaign.name %></td>
                 <td><%= campaign.start_date.strftime('%d/%m/%Y') %></td>
                 <td><%= campaign.end_date.strftime('%d/%m/%Y') %></td>
                 <td>
-                  <%= link_to campaign do %>
+                  <%= link_to admin_campaign_path(campaign) do %>
                     <i class="fa fa-eye"></i>
                   <% end %>
                 </td>
                 <td>
-                  <%= link_to edit_campaign_path(campaign) do %>
+                  <%= link_to edit_admin_campaign_path(campaign) do %>
                     <i class="fa fa-pencil"></i>
                   <% end %>
                 </td>
                 <td>
-                  <%= link_to campaign, method: :delete, data: { confirm: 'Tem certeza?' } do %>
+                  <%= link_to admin_campaign_path(campaign), method: :delete, data: { confirm: 'Tem certeza?' } do %>
                     <i class="fa fa-times"></i>
                   <% end %>
                 </td>

@@ -16,7 +16,7 @@
   <% end %>
 
   <% label_class = campaign.new_record? ? '' : 'active' %>
-  <%= form_for campaign do |f| %>
+  <%= form_for [:admin, campaign] do |f| %>
     <div class="row">
       <div class="input-field col s12">
         <%= f.label 'Nome', class: label_class %>
@@ -78,7 +78,13 @@
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <%= f.submit 'Salvar', class: 'btn waves-effect waves-light right save-campaign' %>
+        <%= f.label 'Exibição', class: 'active' %>
+        <%= f.select :display, [['Exibir campanha para todos', true], ['Exibir apenas para os administradores', false]], {}, class: 'campaign-type browser-default' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.submit 'Salvar', class: 'btn waves-effect waves-light right yellow-button' %>
       </div>
     </div>
   <% end %>

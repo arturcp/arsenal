@@ -23,7 +23,7 @@
               <td><%= item.current_amount %></td>
               <td><%= number_to_currency(item.price) %></td>
               <td>
-                <%= link_to item, method: :delete, data: { confirm: 'Tem certeza?' } do %>
+                <%= link_to [:admin, item], method: :delete, data: { confirm: 'Tem certeza?' } do %>
                   <i class="fa fa-times"></i>
                 <% end %>
               </td>

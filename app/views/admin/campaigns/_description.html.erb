@@ -7,7 +7,7 @@
     <ul class="card-action-buttons">
       <li>
         <%=
-          link_to landing_page_path(campaign),
+          link_to campaigns_landing_path(campaign),
             class: 'btn-floating waves-effect waves-light green accent-4',
             title: 'Ir para a campanha',
             target: '_blank' do %>
@@ -15,7 +15,7 @@
         <% end %>
       </li>
       <li>
-        <%= link_to edit_campaign_path(campaign), class: 'btn-floating waves-effect waves-light light-blue accent-4', title: 'Editar campanha' do %>
+        <%= link_to edit_admin_campaign_path(campaign), class: 'btn-floating waves-effect waves-light light-blue accent-4', title: 'Editar campanha' do %>
           <i class="fa fa-pencil-square-o"></i></a>
         <% end %>
       </li>
@@ -33,7 +33,7 @@
       <p><i class="mdi-communication-email"></i> Tipo: <%= campaign.type_text %></p>
 
       <p>
-        <%= link_to 'Voltar', campaigns_path %>
+        <%= link_to 'Voltar', admin_campaigns_path %>
       </p>
     </div>
   </div>

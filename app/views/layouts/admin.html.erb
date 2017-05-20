@@ -20,7 +20,9 @@
   <body data-page="<%= pagejs %>">
     <%= render 'layouts/admin/header' %>
 
-    <p class="notice"><%= notice %></p>
+    <% if notice.present? %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
     <p class="alert"><%= alert %></p>
 
     <div id="main">

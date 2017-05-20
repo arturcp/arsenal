@@ -5,7 +5,7 @@
       <br>
       <div class="list-group">
         <% active_campaigns.each do |campaign| %>
-          <%= link_to campaign.name, landing_page_path(campaign), class: 'list-group-item' %>
+          <%= link_to campaign.name, campaigns_landing_path(campaign), class: 'list-group-item' %>
         <% end %>
       </div>
     </div>
@@ -38,7 +38,7 @@
       <br>
       <div class="list-group">
         <% inactive_campaigns.each do |campaign| %>
-          <%= link_to campaign.name, landing_page_path(campaign), class: 'list-group-item' %>
+          <%= link_to campaign.name, campaigns_landing_path(campaign), class: 'list-group-item' %>
         <% end %>
       </div>
     </div>
