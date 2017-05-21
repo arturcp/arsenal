@@ -1,51 +1,25 @@
 <div class="row">
-  <div class="col s12 m12 l6">
-    <div class="card-panel">
-      <h4 class="header2">Campanhas</h4>
-      <div class="row">
-        <table class="striped">
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Início</th>
-              <th>Fim</th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% @campaigns.sort_by {|c| c.finished?.to_s }.each do |campaign| %>
-              <tr class="<%= campaign.finished? ? 'finished-campaign' : '' %>">
-                <td><%= campaign.name %></td>
-                <td><%= campaign.start_date.strftime('%d/%m/%Y') %></td>
-                <td><%= campaign.end_date.strftime('%d/%m/%Y') %></td>
-                <td>
-                  <%= link_to admin_campaign_path(campaign) do %>
-                    <i class="fa fa-eye"></i>
-                  <% end %>
-                </td>
-                <td>
-                  <%= link_to edit_admin_campaign_path(campaign) do %>
-                    <i class="fa fa-pencil"></i>
-                  <% end %>
-                </td>
-                <td>
-                  <%= link_to admin_campaign_path(campaign), method: :delete, data: { confirm: 'Tem certeza?' } do %>
-                    <i class="fa fa-times"></i>
-                  <% end %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s6">
+        <a class="active" href="#campaign-list-tab">Campanhas</a>
+      </li>
+      <li class="tab col s6">
+        <a href="#new-campaign-tab">Nova campanha</a>
+      </li>
+    </ul>
   </div>
-
-  <div class="col s12 m12 l6">
-    <div class="card-panel">
-      <h4 class="header2">Nova campanha</h4>
-      <%= render 'form', campaign: @campaign %>
+  <div id="campaign-list-tab" class="col s12">
+    <%= render 'campaigns_list', campaigns: @campaigns %>
+  </div>
+  <div id="new-campaign-tab" class="col s12">
+    <div class="row">
+      <div class="col s12">
+        <div class="card-panel">
+          <h4 class="header2">Nova campanha</h4>
+            <%= render 'form', campaign: @campaign %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

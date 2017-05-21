@@ -1,7 +1,36 @@
-<div class="row">
-  <%= render 'description', campaign: @campaign %>
-  <%= render 'campaign_fields', campaign: @campaign %>
-</div>
+<h4 class="center-align">Campanha: <%= @campaign.title %></h4>
 
-<%= render 'items', campaign: @campaign %>
-<%= render 'orders', campaign: @campaign %>
+<p class="center-align">
+  <%= link_to 'voltar para a lista de campanhas', admin_campaigns_path %>
+</p>
+
+<div class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s3">
+        <a class="active" href="#campaign-description-tab">Descrição</a>
+      </li>
+      <li class="tab col s3">
+        <a class="active" href="#new-item-tab">Novo item</a>
+      </li>
+      <li class="tab col s3">
+        <a href="#items-list-tab">Itens</a>
+      </li>
+      <li class="tab col s3">
+        <a href="#orders-tab">Compras</a>
+      </li>
+    </ul>
+  </div>
+  <div id="campaign-description-tab" class="col s12">
+    <%= render 'description', campaign: @campaign %>
+  </div>
+  <div id="new-item-tab" class="col s12">
+    <%= render 'campaign_fields', campaign: @campaign %>
+  </div>
+  <div id="items-list-tab" class="col s12">
+    <%= render 'items', campaign: @campaign %>
+  </div>
+  <div id="orders-tab" class="col s12">
+    <%= render 'orders', campaign: @campaign %>
+  </div>
+</div>
