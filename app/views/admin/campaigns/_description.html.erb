@@ -25,12 +25,23 @@
       <h4 class="card-title activator grey-text text-darken-4 bold">
         <%= campaign.title %>
       </h4>
-      <p>
-          <i class="mdi-action-perm-phone-msg"></i>
-          De <%= campaign.start_date.strftime('%d/%m/%Y') %>
-          até <%= campaign.end_date.strftime('%d/%m/%Y') %>
-      </p>
-      <p><i class="mdi-communication-email"></i> Tipo: <%= campaign.type_text %></p>
+
+      <ul class="browser-default">
+        <li>De <%= campaign.start_date.strftime('%d/%m/%Y') %> até <%= campaign.end_date.strftime('%d/%m/%Y') %></li>
+        <li>Tipo: <%= campaign.type_text %></li>
+        <li>
+          <% if campaign.display %>
+            Visível para todos
+          <% else %>
+            Visível apenas para administradores
+          <% end %>
+        </li>
+        <% if campaign.finished? %>
+          <li class="finished-warning">
+            Campanha encerrada
+          </li>
+        <% end %>
+      </ul>
 
       <p>
         <%= link_to 'Voltar', admin_campaigns_path %>
