@@ -48,7 +48,8 @@ christmas = Campaign.create!(
   end_date: Date.parse('2016-12-25'),
   campaign_type: Campaign::TERMOMETER,
   main_image_url: image_for(:christmas),
-  video_url: 'https://www.youtube.com/watch?v=EK_OqnXg71U'
+  video_url: 'https://www.youtube.com/watch?v=EK_OqnXg71U',
+  closing_text: 'Agradecemos de coração a todos que puderam nos ajudar a transformar esse sonho em realidade. Basta um pouco de cada um para que possamos construir um mundo melhor, e para isso nada melhor do que compartilharmos uma ceia de natal.'
 )
 
 christmas.items.create!(
@@ -68,6 +69,9 @@ christmas.items.create!(
   price: 70.0,
   current_amount: 40
 )
+
+christmas.campaign_news.create(text: 'Compartilhem com seus amigos, ajude a campanha a atingir o maior número de pessoas possíveis.', link: 'http://www.facebook.com', link_text: 'Compartilhe')
+christmas.campaign_news.create(text: 'Conseguimos o suficiente para acolhermos 25 pessoas!')
 
 easter = Campaign.create!(
   name: 'Páscoa 2017',
@@ -96,7 +100,7 @@ construction = Campaign.create!(
   subtitle: 'Ajude-nos a reformá-la',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer commodo sodales purus, lacinia ultrices tortor hendrerit nec. Nunc vitae urna euismod, mattis diam sed, sagittis nisl. Duis finibus quis risus varius rutrum. Nulla dictum odio vel nisi consectetur condimentum. Sed mi nibh, elementum id turpis dictum, fringilla ultricies est. Sed euismod, dui ut fermentum convallis, odio ex mollis nunc, quis dapibus dolor arcu in magna. Nunc in augue vehicula, pulvinar sapien vestibulum, gravida enim. Sed sed aliquet massa, id accumsan nunc. Etiam egestas lorem vel elit euismod rutrum. Nullam congue porttitor purus, ut rutrum ante dictum eget. Morbi efficitur maximus lectus, nec pellentesque erat pretium viverra. Sed eget tempus sapien, vel rhoncus nunc. Nunc sed lorem viverra, rhoncus erat non, placerat neque. Integer ut orci vitae mauris pretium efficitur. Nunc sit amet lacus a leo volutpat bibendum ut ac sem.',
   start_date: Time.zone.now,
-  end_date: 100.years.from_now,
+  end_date: 5.years.from_now,
   campaign_type: Campaign::CIRCULAR_PROGRESS,
   main_image_url: image_for(:construction),
   video_url: 'https://www.youtube.com/watch?v=rdl45XMmD1g',

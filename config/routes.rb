@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :home, only: [:index, :show]
 
   namespace :campaigns, path: '' do
-    resources :landings, only: :show
+    resources :landings, only: :show, path: 'campanha'
   end
 
   get 'admin', to: redirect('/admin/campaigns')

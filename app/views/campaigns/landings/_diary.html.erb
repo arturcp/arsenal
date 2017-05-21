@@ -1,0 +1,23 @@
+<% news_count = campaign.campaign_news.count %>
+
+<% if news_count.positive? || 1 == 1 %>
+  <div class="row">&nbsp;</div>
+
+  <div class="row">
+    <% campaign.campaign_news.each do |news| %>
+      <div class="col s12 <%= news_count.even? ? 'm6' : 'm12' %>">
+        <div class="card left-align">
+          <div class="card-content">
+            <p><%= news.created_at.strftime('%d/%m/%Y') %> - <%= news.text %></p>
+          </div>
+
+          <% if news.link.present? %>
+            <div class="card-action center-align">
+              <%= link_to news.link_text, news.link, target: '_blank' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

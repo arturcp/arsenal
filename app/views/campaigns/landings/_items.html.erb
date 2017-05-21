@@ -7,6 +7,7 @@
       <h2><%= number_to_currency(campaign.current_amount) %> de <%= number_to_currency(campaign.target_value) %></h2>
       <div id="goal-progress" data-target="<%= campaign.target_value %>" data-current-amount="<%= campaign.current_amount %>">
       </div>
+      <%= render 'diary', campaign: campaign %>
     </div>
 
     <h1 class="text-center">Ajude nosso projeto a acontecer!</h1>
