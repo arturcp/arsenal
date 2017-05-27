@@ -115,3 +115,14 @@ construction.items.create!(
   price: 5,
   current_amount: 0
 )
+
+Article.create!(
+  title: 'Inauguração',
+  description: 'Este é um momento único para nós aqui do Arsenal. Vamos ajudar quem precisa! Nos próximos dias daremos início a algumas campanhas de arrecadação que são muito importantes para manter nosso trabalho',
+  main_image_url: 'http://lazypenguins.com/wp-content/uploads/2015/09/The-Enchanted-River-in-Surigao.jpg',
+  body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed fringilla risus. Curabitur sit amet laoreet ligula, tempor rutrum justo. Vivamus gravida tincidunt nunc, sed egestas nunc iaculis nec. Nullam eget nulla nec arcu viverra tincidunt. Nunc tempor a augue nec iaculis. Morbi mollis efficitur enim et elementum. Nunc commodo imperdiet tellus vel imperdiet. Etiam et accumsan neque. Donec suscipit et nisl ac laoreet.
+  Nullam facilisis augue vitae velit fringilla, nec tempor orci gravida. In pretium porttitor quam eget placerat. Phasellus quis suscipit magna. Sed pharetra magna id sollicitudin gravida. Aenean pulvinar ornare scelerisque. Duis a tincidunt purus, sed mollis ligula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+  Curabitur iaculis risus at blandit scelerisque. Sed pharetra justo quis eleifend elementum. Duis pretium lectus non commodo venenatis. Nulla vitae enim mauris. Curabitur hendrerit tortor sagittis tellus pellentesque dictum. Nulla accumsan ultricies dolor, id tempor orci mollis ac. Nunc eleifend, mi sit amet vulputate pretium, arcu lacus tincidunt quam, non mollis diam mi id turpis. In et felis eget elit vehicula aliquet et aliquet nulla. Nam nec finibus quam, ac egestas libero.
+  Maecenas blandit facilisis tempus. Sed non lacinia enim. Etiam vitae metus tincidunt, sollicitudin nisi non, ultrices risus. Mauris volutpat dolor nulla, id malesuada nulla ultrices non. Morbi pharetra justo nec sagittis luctus. Duis luctus ac est et tristique. Praesent efficitur sem ac dui euismod luctus. Ut interdum hendrerit dui, in vulputate diam imperdiet eu.
+  Proin aliquet ligula fringilla tortor condimentum dignissim. Proin ut dui non lorem lobortis iaculis. Nam non egestas justo. Aliquam erat volutpat. In tincidunt tellus quis lacinia gravida. Quisque tincidunt porttitor erat, vel dignissim est mollis vel. Nullam vitae enim nec ex tempus efficitur. Integer quis sapien pulvinar, efficitur justo in, iaculis tellus. Phasellus id varius arcu. Aliquam eget velit quis velit elementum consectetur eu eu risus. Cras laoreet fringilla lacus a dignissim. Quisque cursus nisl purus, eu interdum elit faucibus quis. Proin egestas turpis erat, in efficitur augue viverra in. Nunc lacinia faucibus nisi, ac tristique massa auctor a. Praesent sed dui quam.'
+)

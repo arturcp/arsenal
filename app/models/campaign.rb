@@ -1,7 +1,7 @@
 class Campaign < ApplicationRecord
   has_many :items
   has_many :orders
-  has_many :campaign_news
+  has_many :campaign_news, -> { order('created_at desc') }
 
   validates :name, presence: true
 

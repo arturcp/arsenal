@@ -1,23 +1,33 @@
 <% news_count = campaign.campaign_news.count %>
 
-<% if news_count.positive? || 1 == 1 %>
+<% if news_count.positive? %>
   <div class="row">&nbsp;</div>
 
-  <div class="row">
-    <% campaign.campaign_news.each do |news| %>
-      <div class="col s12 <%= news_count.even? ? 'm6' : 'm12' %>">
+  <div class="row campaign-diary">
+    <% campaign.campaign_news.each_with_index do |news, index| %>
+      <div class="col s12 m6 <%= 'hidden' if index > 1 %>">
         <div class="card left-align">
           <div class="card-content">
-            <p><%= news.created_at.strftime('%d/%m/%Y') %> - <%= news.text %></p>
+            <div class="text-right campaign-diary-created-at">
+              <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+              Criado em <%= news.created_at.strftime('%d/%m/%Y')%>
+            </div>
+            <hr />
+            <div class="campaign-diary-text"><%= text_to_html(news.text) %></div>
           </div>
 
-          <% if news.link.present? %>
-            <div class="card-action center-align">
-              <%= link_to news.link_text, news.link, target: '_blank' %>
-            </div>
-          <% end %>
+          <div class="card-action center-align">
+            <%= link_to news.link_text, news.link, target: '_blank' %>
+          </div>
+
         </div>
       </div>
     <% end %>
   </div>
+
+  <% if campaign.campaign_news.count > 2 %>
+    <div class="campaign-news-expand-button">
+      <a href="javascript://">Veja mais notícias</a>
+    </div>
+  <% end %>
 <% end %>

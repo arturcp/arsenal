@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :campaigns
     resources :articles
+    resources :campaign_news
     resources :items, only: [:create, :destroy]
     resources :orders, only: [:create, :destroy]
   end
