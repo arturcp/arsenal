@@ -8,6 +8,7 @@
               <th>Nome</th>
               <th>Início</th>
               <th>Fim</th>
+              <th class="center-align"><i class="fa fa-comments-o" aria-hidden="true"></i></th>
               <th colspan="3"></th>
             </tr>
           </thead>
@@ -18,6 +19,18 @@
                 <td><%= campaign.name %></td>
                 <td><%= campaign.start_date.strftime('%d/%m/%Y') %></td>
                 <td><%= campaign.end_date.strftime('%d/%m/%Y') %></td>
+                <% count = campaign.messages_by_status(status: nil).count %>
+
+                <td class="center-align">
+                  <%=
+                    content_tag(
+                      :span,
+                      count,
+                      data: { messages_url: admin_campaign_message_path(campaign) },
+                      class: "badge centralized-badge #{'new red' if count > 0}"
+                    )
+                  %>
+                </td>
                 <td>
                   <%= link_to admin_campaign_path(campaign) do %>
                     <i class="fa fa-eye"></i>

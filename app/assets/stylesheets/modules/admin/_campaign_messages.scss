@@ -1,0 +1,17 @@
+#campaign-messages-modal {
+  min-height: 400px;
+
+  .modal-close {
+    text-align: right;
+    margin-right: 5px;
+  }
+
+  .campaign-messages-list {
+    height: 300px;
+    overflow: scroll;
+  }
+
+  [data-messages-tabs] {
+    padding: 20px;
+  }
+}

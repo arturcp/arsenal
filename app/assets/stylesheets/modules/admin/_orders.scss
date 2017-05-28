@@ -15,3 +15,24 @@
 .fa-times {
   color: #f00;
 }
+
+
+.order-reference-highlight {
+  border: 1px solid #eee;
+  width: 340px;
+  margin: 0 auto;
+}
+
+span.badge.new {
+  border-radius: 30px;
+  padding: 5px 9px;
+  cursor: pointer;
+
+  &:after {
+    content: '';
+  }
+}
+
+.centralized-badge {
+  float: inherit !important;
+}

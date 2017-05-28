@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170520222559) do
+ActiveRecord::Schema.define(version: 20170528150509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 20170520222559) do
     t.string   "main_image_url"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "campaign_messages", force: :cascade do |t|
+    t.integer  "campaign_id"
+    t.string   "order_reference"
+    t.string   "author"
+    t.string   "email"
+    t.string   "message"
+    t.boolean  "status"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "campaign_news", force: :cascade do |t|
@@ -69,7 +80,6 @@ ActiveRecord::Schema.define(version: 20170520222559) do
     t.decimal  "price"
     t.string   "name"
     t.string   "email"
-    t.string   "comments"
     t.integer  "campaign_id"
   end
 

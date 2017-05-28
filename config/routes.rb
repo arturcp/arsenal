@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :campaign_news
     resources :items, only: [:create, :destroy]
     resources :orders, only: [:create, :destroy]
+    resources :campaign_messages, only: [:show, :update]
   end
 
   resources :shopping_cart, only: [:index, :create, :destroy]

@@ -126,3 +126,10 @@ Article.create!(
   Maecenas blandit facilisis tempus. Sed non lacinia enim. Etiam vitae metus tincidunt, sollicitudin nisi non, ultrices risus. Mauris volutpat dolor nulla, id malesuada nulla ultrices non. Morbi pharetra justo nec sagittis luctus. Duis luctus ac est et tristique. Praesent efficitur sem ac dui euismod luctus. Ut interdum hendrerit dui, in vulputate diam imperdiet eu.
   Proin aliquet ligula fringilla tortor condimentum dignissim. Proin ut dui non lorem lobortis iaculis. Nam non egestas justo. Aliquam erat volutpat. In tincidunt tellus quis lacinia gravida. Quisque tincidunt porttitor erat, vel dignissim est mollis vel. Nullam vitae enim nec ex tempus efficitur. Integer quis sapien pulvinar, efficitur justo in, iaculis tellus. Phasellus id varius arcu. Aliquam eget velit quis velit elementum consectetur eu eu risus. Cras laoreet fringilla lacus a dignissim. Quisque cursus nisl purus, eu interdum elit faucibus quis. Proin egestas turpis erat, in efficitur augue viverra in. Nunc lacinia faucibus nisi, ac tristique massa auctor a. Praesent sed dui quam.'
 )
+
+CampaignMessage.create!(
+  campaign_id: easter.id,
+  name: 'John Doe',
+  email: 'john.doe@gmail.com',
+  message: 'Fico muito feliz de poder participar dessa iniciativa.'
+)

@@ -1,7 +1,9 @@
 page.at('admin/campaigns#index admin/campaigns#edit', function() {
-  var Calendar = require('calendar');
+  var Calendar = require('calendar'),
+      CampaignMessages = require('campaign-messages');
 
   new Calendar('.datepicker');
+  new CampaignMessages();
 });
 
 page.at('admin/campaigns#show', function() {

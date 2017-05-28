@@ -2,6 +2,7 @@ class Campaign < ApplicationRecord
   has_many :items
   has_many :orders
   has_many :campaign_news, -> { order('created_at desc') }
+  has_many :campaign_messages, -> { order('status, created_at desc') }
 
   validates :name, presence: true
 
@@ -39,5 +40,9 @@ class Campaign < ApplicationRecord
 
   def finished?
     end_date < Time.zone.now
+  end
+
+  def messages_by_status(status: nil)
+    campaign_messages.where(status: status)
   end
 end
