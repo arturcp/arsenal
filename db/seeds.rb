@@ -129,7 +129,23 @@ Article.create!(
 
 CampaignMessage.create!(
   campaign_id: easter.id,
-  name: 'John Doe',
+  author: 'John Doe',
   email: 'john.doe@gmail.com',
-  message: 'Fico muito feliz de poder participar dessa iniciativa.'
+  message: 'Fico muito feliz de poder participar dessa iniciativa.',
+  status: 1
+)
+
+CampaignMessage.create!(
+  campaign_id: easter.id,
+  author: 'Mary Roe',
+  email: 'mary.doe@gmail.com',
+  message: 'Espero que minha contribuição possa fazer a diferença para vocês.'
+)
+
+CampaignMessage.create!(
+  campaign_id: easter.id,
+  author: 'Edgar Allan Poe',
+  email: 'unknown@uol.com.br',
+  message: 'Não quero falar nada aqui',
+  status: 0
 )

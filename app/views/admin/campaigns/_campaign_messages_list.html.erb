@@ -1,3 +1,5 @@
+<% buttons ||= [] %>
+
 <section class="campaign-messages-list">
   <div class="row">
     <div class="col s12">
@@ -20,10 +22,21 @@
                   <td><%= message.email %></td>
                   <td><%= message.message %></td>
 
-                  <td>
-                  </td>
-                  <td>
-                  </td>
+                  <% if buttons.include?(:approve) %>
+                    <td>
+                      <%= link_to 'javascript:;', class: 'approve-message', data: { approve_message: true } do %>
+                        <i class="fa fa-thumbs-up"></i>
+                      <% end %>
+                    </td>
+                  <% end %>
+
+                  <% if buttons.include?(:reject) %>
+                    <td>
+                      <%= link_to 'javascript:;', class: 'reject-message', data: { reject_message: true } do %>
+                        <i class="fa fa-thumbs-down"></i>
+                      <% end %>
+                    </td>
+                  <% end %>
                 </tr>
               <% end %>
             </tbody>
