@@ -1,4 +1,4 @@
-define('campaign-messages', [], function() {
+define('campaign-messages', ['message-status-updater'], function(MessageStatusUpdater) {
   function CampaignMessages() {
     this.badges = $('.centralized-badge');
     this.modal = $('#campaign-messages-modal');
@@ -56,7 +56,12 @@ define('campaign-messages', [], function() {
         messageId = element.data(status + '-message');
         row = element.parents('tr:first');
 
-    new RowTransferer(row).transferTo(status);
+    var updater = new MessageStatusUpdater(row);
+    if (status === 'approve') {
+      updater.approve();
+    } else {
+      updater.reject();
+    }
 
     this._bindEvents();
   };
@@ -67,34 +72,6 @@ define('campaign-messages', [], function() {
 
   fn._rejectMessage = function(event) {
     this._changeMessageStatus(event, 'reject');
-  };
-
-  var RowTransferer = function(row, status) {
-    this.row = row;
-    this.hideClass = 'hide';
-
-    this.transferTo = function(status) {
-      this.status = status;
-      this.container = $('[data-' + status + '-container]')
-
-      var newRow = this._transferRow();
-      this._toggleButtons(newRow);
-      this.row.hide('slow', function() { $(this).remove() });
-    };
-
-    this._toggleButtons = function(row) {
-      triggeredButton = row.find('.' + this.status + '-message');
-
-      row.find('.hide').removeClass(this.hideClass);
-      triggeredButton.addClass(this.hideClass);
-    };
-
-    this._transferRow = function() {
-      var newRow = $(this.row.prop('outerHTML'));
-      this.container.find('table tbody').prepend(newRow);
-
-      return newRow;
-    };
   };
 
   return CampaignMessages;
