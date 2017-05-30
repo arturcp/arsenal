@@ -27,7 +27,7 @@
                       :span,
                       count,
                       data: { update_messages_url: admin_campaign_message_path(campaign) },
-                      class: "badge centralized-badge #{'new red' if count > 0}"
+                      class: "badge centralized-badge new #{count > 0 ? 'red' : 'green'}"
                     )
                   %>
                 </td>

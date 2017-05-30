@@ -20,13 +20,14 @@ define('campaign-messages', ['message-status-updater'], function(MessageStatusUp
 
   fn._initializeModal = function(event) {
     var element = $(event.currentTarget),
-        url = element.data('messages-url'),
         self = this;
+
+    this.url = element.data('update-messages-url')
 
     $.proxy(this._openModal, this);
 
     $.ajax({
-      url: url
+      url: this.url
     }).done(function(content) {
       $('[data-messages-tabs]').html(content);
       self._openModal();
@@ -42,9 +43,7 @@ define('campaign-messages', ['message-status-updater'], function(MessageStatusUp
   };
 
   fn._openModal = function() {
-    this.modal.modal({
-      complete: this._onCloseModal
-    }).modal('open');
+    this.modal.modal({ complete: this._onCloseModal }).modal('open');
   };
 
   fn._onCloseModal = function() {
@@ -54,16 +53,27 @@ define('campaign-messages', ['message-status-updater'], function(MessageStatusUp
   fn._changeMessageStatus = function(event, status) {
     var element = $(event.currentTarget),
         messageId = element.data(status + '-message');
-        row = element.parents('tr:first');
+        row = element.parents('tr:first'),
+        self = this;
 
-    var updater = new MessageStatusUpdater(row);
-    if (status === 'approve') {
-      updater.approve();
-    } else {
-      updater.reject();
-    }
+    $.ajax({
+      method: "POST",
+      url: this.url,
+      headers: { "X-HTTP-Method-Override": "PUT" },
+      data: {
+        message_id: messageId,
+        status: status === 'approve' ? 1 : 0
+      }
+    }).done(function() {
+      var updater = new MessageStatusUpdater(row);
+      if (status === 'approve') {
+        updater.approve();
+      } else {
+        updater.reject();
+      }
 
-    this._bindEvents();
+      self._bindEvents();
+    });
   };
 
   fn._approveMessage = function(event) {

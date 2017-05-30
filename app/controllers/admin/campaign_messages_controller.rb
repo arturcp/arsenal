@@ -19,7 +19,9 @@ module Admin
     end
 
     def update
-      campaign_message.update(status: params[:status])
+      if campaign_message.campaign.id == params[:id].to_i
+        campaign_message.update(status: params[:status])
+      end
 
       head :ok
     end
@@ -27,7 +29,7 @@ module Admin
     private
 
     def campaign_message
-      @campaign_message ||= CampaignMessage.find(params[:id].to_i)
+      @campaign_message ||= CampaignMessage.find(params[:message_id].to_i)
     end
   end
 end
