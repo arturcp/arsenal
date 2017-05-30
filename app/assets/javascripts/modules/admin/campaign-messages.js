@@ -9,7 +9,7 @@ define('campaign-messages', [], function() {
   var fn = CampaignMessages.prototype;
 
   fn._bindEvents = function() {
-    this.badges.off('click').on('click', $.proxy(this._openModal, this));
+    this.badges.off('click').on('click', $.proxy(this._initializeModal, this));
 
     var approveButtons = $('[data-approve-message]'),
         rejectButtons = $('[data-reject-message]');
@@ -18,16 +18,18 @@ define('campaign-messages', [], function() {
     rejectButtons.off('click').on('click', $.proxy(this._rejectMessage, this));
   };
 
-  fn._openModal = function(event) {
+  fn._initializeModal = function(event) {
     var element = $(event.currentTarget),
         url = element.data('messages-url'),
         self = this;
+
+    $.proxy(this._openModal, this);
 
     $.ajax({
       url: url
     }).done(function(content) {
       $('[data-messages-tabs]').html(content);
-      self.modal.modal().modal('open');
+      self._openModal();
 
       var tabs = $('#campaign-messages-modal .tabs'),
           firstTab = $('#campaign-messages-modal .tabs a:first');
@@ -37,6 +39,16 @@ define('campaign-messages', [], function() {
 
       self._bindEvents();
     });
+  };
+
+  fn._openModal = function() {
+    this.modal.modal({
+      complete: this._onCloseModal
+    }).modal('open');
+  };
+
+  fn._onCloseModal = function() {
+    location.reload();
   };
 
   fn._changeMessageStatus = function(event, status) {
