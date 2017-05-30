@@ -16,7 +16,7 @@ define('message-status-updater', [], function() {
 
   fn._transferTo = function(status) {
     this.status = status;
-    this.container = $('[data-' + status + '-container]')
+    this.container = $('[data-' + status + '-container]');
 
     var newRow = this._transferRow();
     this._toggleButtons(newRow);
