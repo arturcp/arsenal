@@ -22,21 +22,19 @@
                   <td><%= message.email %></td>
                   <td><%= message.message %></td>
 
-                  <% if buttons.include?(:approve) %>
-                    <td>
-                      <%= link_to 'javascript:;', class: 'approve-message', data: { approve_message: true } do %>
-                        <i class="fa fa-thumbs-up"></i>
-                      <% end %>
-                    </td>
-                  <% end %>
+                  <td>
+                    <%= link_to 'javascript:;', class: "approve-message #{'hide' unless buttons.include?(:approve)}",
+                      data: { approve_message: message.id } do %>
+                      <i class="fa fa-thumbs-up"></i>
+                    <% end %>
+                  </td>
 
-                  <% if buttons.include?(:reject) %>
-                    <td>
-                      <%= link_to 'javascript:;', class: 'reject-message', data: { reject_message: true } do %>
-                        <i class="fa fa-thumbs-down"></i>
-                      <% end %>
-                    </td>
-                  <% end %>
+                  <td>
+                    <%= link_to 'javascript:;', class: "reject-message #{'hide' unless buttons.include?(:reject)}",
+                      data: { reject_message: message.id } do %>
+                      <i class="fa fa-thumbs-down"></i>
+                    <% end %>
+                  </td>
                 </tr>
               <% end %>
             </tbody>

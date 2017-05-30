@@ -15,10 +15,10 @@
   <div id="pending-comments-tab" class="col s12">
     <%= render 'admin/campaigns/campaign_messages_list', messages: pending_messages, buttons: [:approve, :reject] %>
   </div>
-  <div id="approved-comments-tab" class="col s12">
+  <div id="approved-comments-tab" class="col s12" data-approve-container>
     <%= render 'admin/campaigns/campaign_messages_list', messages: approved_messages, buttons: [:reject] %>
   </div>
-  <div id="rejected-comments-tab" class="col s12">
+  <div id="rejected-comments-tab" class="col s12" data-reject-container>
     <%= render 'admin/campaigns/campaign_messages_list', messages: rejected_messages, buttons: [:approve] %>
   </div>
 </div>
