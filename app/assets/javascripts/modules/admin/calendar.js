@@ -8,7 +8,6 @@ define('calendar', [], function() {
   var fn = Calendar.prototype;
 
   fn._bindEvents = function() {
-    // this.container.on('focus', $.proxy(this, this._openCalendar));
     this._openCalendar();
   };
 
@@ -23,7 +22,6 @@ define('calendar', [], function() {
       today: 'hoje',
       clear: 'limpar',
       close: 'fechar',
-      // format: 'dddd, d !de mmmm !de yyyy',
       format: 'yyyy-mm-dd',
       formatSubmit: 'yyyy-mm-dd'
     });
