@@ -12,4 +12,12 @@ module CampaignsHelper
   def text_to_html(text)
     text.sub("\n", '<br><br>').html_safe
   end
+
+  def collaborators_authors(messages)
+    messages.pluck(:author).uniq.sort.join('<br>').html_safe
+  end
+
+  def valid_collaborators?(campaign)
+    campaign.campaign_messages.select { |message| message.author.present? }.count.positive?
+  end
 end

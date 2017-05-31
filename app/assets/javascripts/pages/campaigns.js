@@ -15,7 +15,9 @@ page.at('admin/campaigns#show', function() {
 });
 
 page.at('campaigns/landings#show', function() {
-  var CampaignNews = require('campaign-news');
+  var CampaignNews = require('campaign-news'),
+      Collaborators = require('collaborators');
 
   new CampaignNews().expandOnClick();
+  new Collaborators();
 });

@@ -15,7 +15,14 @@
           <p class="sub-intro lead white-text"><%= campaign.subtitle %></p>
           <% if campaign.video_url %>
             <a class="btn popup-video mt-30 waves-effect waves-light" href="<%= campaign.video_url %>">
-              Veja o vídeo
+              <i class="fa fa-play"></i> Veja o vídeo
+            </a>
+            &nbsp;
+          <% end %>
+
+          <% if valid_collaborators?(campaign) %>
+            <a class="btn mt-30 waves-effect waves-light" href="javascript:;" data-open-collaborators>
+              <i class="fa fa-user-circle"></i> Nossos heróis
             </a>
           <% end %>
       </div>
