@@ -10,7 +10,6 @@ module Admin
         price: items.first[:price],
         name: params[:name],
         email: '',
-        comments: '',
         campaign_id: params[:campaign_id]
       )
 
