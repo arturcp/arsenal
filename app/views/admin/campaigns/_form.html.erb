@@ -16,7 +16,7 @@
   <% end %>
 
   <% label_class = campaign.new_record? ? '' : 'active' %>
-  <%= form_for [:admin, campaign] do |f| %>
+  <%= form_for [:admin, campaign], html: { multipart: true } do |f| %>
     <div class="row">
       <div class="input-field col s12">
         <%= f.label 'Nome', class: label_class %>
@@ -43,8 +43,11 @@
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <%= f.label 'Imagem principal', class: label_class %>
-        <%= f.text_field :main_image_url %>
+        <p>
+          <%= f.label 'Imagem principal', class: label_class %>
+        </p><br />
+        <%= f.hidden_field(:main_image_url_cache) %>
+        <%= f.file_field(:main_image_url) %>
       </div>
     </div>
     <div class="row">

@@ -1,23 +1,28 @@
 source 'https://rubygems.org'
 
 ruby '2.4.0'
-gem 'pg'
 
-gem 'rails', '~> 5.0.1', '>= 5.0.0.1'
+# Basic gems
+gem 'coffee-rails', '~> 4.2'
+gem 'jbuilder', '~> 2.5'
+gem 'pg'
 gem 'puma', '~> 3.8.2'
+gem 'rails', '~> 5.0.1', '>= 5.0.0.1'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
 
-gem 'jbuilder', '~> 2.5'
-
+# Authentication
 gem 'devise'
-gem 'will_paginate', '~> 3.1.0'
+
+# Image upload
+gem 'carrierwave'
+gem 'cloudinary'
 
 # Front end gems
-gem 'materialize-sass'
-gem 'font-awesome-rails'
 gem 'ckeditor'
+gem 'font-awesome-rails'
+gem 'materialize-sass'
+gem 'will_paginate', '~> 3.1.0'
 
 # Payments
 gem 'pagseguro-oficial', '~> 2.5.0'
