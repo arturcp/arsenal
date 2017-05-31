@@ -1,0 +1,40 @@
+<div class="col s12">
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">Itens da campanha</span>
+      <p>
+        Uma campanha é composta por items: são eles que as pessoas vão doar
+        para que a campanha "<%= @campaign.name %>" seja bem sucedida.
+      </p>
+    </div>
+    <div class="card-action" data-url="%<= admin_items_path %>" data-campaign-id="<%= @campaign.id %>">
+      <%= form_for([:admin, Item.new], class: 'col s12') do |f| %>
+        <%= f.hidden_field :campaign_id, value: @campaign.id %>
+        <%= hidden_field_tag :campaign_id, @campaign.id %>
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.label 'Nome' %>
+            <%= f.text_field :name %>
+          </div>
+          <div class="input-field col s12">
+            <%= f.label 'Imagem' %>
+            <%= f.text_field :image_url %>
+          </div>
+          <div class="input-field col s12">
+            <%= f.label 'Preço (em reais)' %>
+            <%= f.text_field :price %>
+          </div>
+          <div class="input-field col s12">
+            <%= f.label 'Quantidade esperada' %>
+            <%= f.number_field :target, min: 0 %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.submit 'Salvar', class: 'btn waves-effect waves-light right yellow-button' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

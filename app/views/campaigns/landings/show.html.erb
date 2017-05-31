@@ -1,0 +1,10 @@
+<%= render 'header', campaign: @campaign %>
+<%= render 'items', campaign: @campaign %>
+<%= render 'testimonials', campaign: @campaign %>
+<%= render 'footer', campaign: @campaign %>
+
+<% if @campaign.finished? %>
+  <%= render 'modal', campaign: @campaign %>
+<% end %>
+
+<%= render 'collaborators', campaign: @campaign %>

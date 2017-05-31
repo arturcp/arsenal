@@ -1,0 +1,38 @@
+.order-description {
+  display: none;
+
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+#new-order-modal {
+  select {
+    display: block;
+  }
+}
+
+.fa-times {
+  color: #f00;
+}
+
+
+.order-reference-highlight {
+  border: 1px solid #eee;
+  width: 340px;
+  margin: 0 auto;
+}
+
+span.badge.new {
+  border-radius: 30px;
+  padding: 5px 9px;
+  cursor: pointer;
+
+  &:after {
+    content: '';
+  }
+}
+
+.centralized-badge {
+  float: inherit !important;
+}

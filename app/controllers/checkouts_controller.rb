@@ -31,10 +31,22 @@ class CheckoutsController < ApplicationController
     if response.errors.any?
       raise response.errors.join("\n")
     else
+      campaign_id = shopping_cart.items.first.campaign_id
+
       order = Order.create!(
         reference: payment.reference,
         items: payment.items,
-        price: shopping_cart.total
+        price: shopping_cart.price,
+        name: params[:name],
+        email: params[:email],
+        campaign_id: campaign_id
+      )
+
+      CampaignMessage.create!(
+        campaign_id: campaign_id,
+        name: params[:name],
+        email: params[:email],
+        message: params[:comments]
       )
 
       redirect_to response.url

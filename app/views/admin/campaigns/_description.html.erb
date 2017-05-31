@@ -1,0 +1,53 @@
+<div class="col s12 m6 l4">
+  <div id="profile-card" class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="<%= campaign.main_image_url %>" alt="user bg">
+    </div>
+
+    <ul class="card-action-buttons">
+      <li>
+        <%=
+          link_to campaigns_landing_path(campaign),
+            class: 'btn-floating waves-effect waves-light green accent-4',
+            title: 'Ir para a campanha',
+            target: '_blank' do %>
+            <i class="fa fa-eye"></i></a>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to edit_admin_campaign_path(campaign), class: 'btn-floating waves-effect waves-light light-blue accent-4', title: 'Editar campanha' do %>
+          <i class="fa fa-pencil-square-o"></i></a>
+        <% end %>
+      </li>
+    </ul>
+
+    <div class="card-content">
+      <h4 class="card-title activator grey-text text-darken-4 bold">
+        <%= campaign.title %>
+      </h4>
+
+      <ul class="browser-default">
+        <li>De <%= campaign.start_date.strftime('%d/%m/%Y') %> até <%= campaign.end_date.strftime('%d/%m/%Y') %></li>
+        <li>Tipo: <%= campaign.type_text %></li>
+        <li>
+          <% if campaign.display %>
+            Visível para todos
+          <% else %>
+            Visível apenas para administradores
+          <% end %>
+        </li>
+        <% if campaign.finished? %>
+          <li class="finished-warning">
+            Campanha encerrada
+          </li>
+        <% end %>
+      </ul>
+
+      <p>
+        <%= link_to 'Voltar', admin_campaigns_path %>
+      </p>
+    </div>
+  </div>
+</div>
+
+<%= render 'campaign_news', campaign: campaign %>

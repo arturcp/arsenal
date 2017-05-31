@@ -1,0 +1,23 @@
+<% if @testimonials.count.positive? %>
+  <section class="banner padding-top-100 padding-bottom-80 gray-bg" id="testimonial-box">
+    <div class="container">
+      <h2 class="center-align">O que estão falando desta campanha</h2>
+      <div class="row">
+        <% number_of_boxes = @testimonials.count % 3 %>
+        <% offset = number_of_boxes == 0 ? 0 : (12 - 4 * number_of_boxes) / 2 %>
+        <% @testimonials.each do |testimonial| %>
+          <div class="col-sm-4 col-sm-offset-<%= offset %>">
+            <% offset = 0 %>
+            <div class="testimonial">
+              <div class="quote">
+                <i class="fa fa-quote-left"></i>
+                <%= testimonial.message %>
+              </div>
+              <div class="author"><%= testimonial.author %></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>

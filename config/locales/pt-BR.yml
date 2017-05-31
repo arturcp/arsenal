@@ -219,3 +219,6 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: ''
+  will_paginate:
+    previous_label: "&#8592; Anterior"
+    next_label: "Proxima &#8594;"

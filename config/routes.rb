@@ -1,18 +1,24 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  scope 'admin' do
+  namespace :admin do
     resources :campaigns
+    resources :articles
+    resources :campaign_news
     resources :items, only: [:create, :destroy]
+    resources :orders, only: [:create, :destroy]
+    resources :campaign_messages, only: [:show, :update]
   end
 
   resources :shopping_cart, only: [:index, :create, :destroy]
-
-  get 'campanha/:campaign_id', to: 'items#index', as: 'landing_page'
-
   resources :checkouts, only: [:create, :show]
   resource :notifications, only: :create
-  get 'admin', to: redirect('/admin/campaigns')
+  resources :home, only: [:index, :show]
 
-  root to: "campaigns#index"
+  namespace :campaigns, path: '' do
+    resources :landings, only: :show, path: 'campanha'
+  end
+
+  get 'admin', to: redirect('/admin/campaigns')
+  root to: "home#index"
 end

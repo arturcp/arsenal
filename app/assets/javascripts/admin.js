@@ -12,5 +12,13 @@
 //
 //= require jquery
 //= require jquery-ujs
-//= require turbolinks
 //= require materialize
+//= require page
+//= require almond
+//= require ckeditor/init
+//= require_tree ./pages
+//= require_tree ./modules/admin
+
+$(document).on('ready page:load', function() {
+  page.dispatch();
+});

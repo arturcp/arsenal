@@ -1,0 +1,14 @@
+<h2><%= @article.title %></h2>
+
+<div>
+  <%= image_tag @article.main_image_url, class: 'img-fluid' if @article.main_image_url %>
+</div>
+
+<div>
+  <%= raw(@article.description) %>
+</div>
+
+<p></p>
+<%= link_to 'Editar', edit_admin_article_path(@article) %> |
+<%= link_to 'Voltar', admin_articles_path %>
+<p></p>

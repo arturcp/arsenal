@@ -1,0 +1,41 @@
+main {
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}
+
+.widget-wrapper {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 2rem;
+}
+
+.navbar {
+  background-color: $home-main-color;
+}
+
+footer.page-footer {
+  background-color: $home-main-color;
+  margin-top: 2rem;
+}
+
+
+.fa-facebook-square.prefix {
+  color: $facebook-color;
+}
+
+.fa-envelope {
+  color: #c53232;
+}
+
+#facebook {
+  font-size: 12px;
+}
+
+
+.img-fluid {
+  width: 100%;
+}
+
+.btn-home {
+  padding-top: 10px;
+}

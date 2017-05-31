@@ -1,0 +1,19 @@
+<div id="collaborators-modal" class="modal">
+  <div class="modal-close">
+    <i class="fa fa-close"></i>
+  </div>
+  <div class="collaborators-modal-content">
+    <h4 class="center-align">Nossos heróis</h4>
+
+    <p>
+      Sem vocês nada do que fazemos seria possível, por isso achamos justo que
+      sejam reconhecidos pelo gesto generoso que fizeram em prol de um mundo
+      melhor e mais justo.
+    </p>
+
+    <p>
+      <%= collaborators_authors(campaign.campaign_messages) %>
+    </p>
+
+  </div>
+</div>

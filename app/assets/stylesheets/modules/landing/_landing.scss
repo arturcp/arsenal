@@ -1162,3 +1162,35 @@ KEY FRAME
 .progress-circle {
   margin-left: 55px !important;
 }
+
+.closing-text-modal {
+  padding: 30px;
+  background-color: $home-main-color;
+
+  h4 {
+    font-size: 25px;
+  }
+
+  h4, p {
+    color: #fff;
+  }
+
+  p {
+    line-height: 1.7;
+    text-align: justify;
+    font-size: 16px;
+  }
+}
+
+#campaign-closing-text .modal-close {
+  margin-right: 11px;
+  color: #f00;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#campaign-closing-text.modal {
+  background-color: $home-main-color;
+  overflow: auto;
+}

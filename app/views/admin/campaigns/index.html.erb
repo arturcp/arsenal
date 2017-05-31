@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s6">
+        <a class="active" href="#campaign-list-tab">Campanhas</a>
+      </li>
+      <li class="tab col s6">
+        <a href="#new-campaign-tab">Nova campanha</a>
+      </li>
+    </ul>
+  </div>
+  <div id="campaign-list-tab" class="col s12">
+    <%= render 'campaigns_list', campaigns: @campaigns %>
+  </div>
+  <div id="new-campaign-tab" class="col s12">
+    <div class="row">
+      <div class="col s12">
+        <div class="card-panel">
+            <%= render 'form', campaign: @campaign %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render 'campaign_messages_modal' %>

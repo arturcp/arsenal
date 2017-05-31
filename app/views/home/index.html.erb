@@ -1,0 +1,21 @@
+<%= render 'navbar' %>
+
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <% @articles.each do |article| %>
+          <%= render 'post', post: article %>
+        <% end %>
+
+        <% if @articles.count > Article.per_page %>
+          <%= render 'pagination', articles: @articles %>
+        <% end %>
+      </div>
+
+      <%= render 'sidebar', active_campaigns: @active_campaigns, inactive_campaigns: @inactive_campaigns %>
+    </div>
+  </div>
+</main>
+
+<%= render 'footer' %>

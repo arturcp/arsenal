@@ -1,0 +1,36 @@
+<tr>
+  <td><%= order.name %></td>
+  <td><%= order.email %></td>
+  <td>
+    <ul>
+      <% order.items.each do |item| %>
+        <li><%= item['quantity'] %> <%= item['description'] %> = <%= number_to_currency(item['amount']) %></li>
+      <% end %>
+    </ul>
+  </td>
+  <td><%= number_to_currency(order.price) %></td>
+  <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
+  <td>
+    <%= link_to 'javascript:;', data: { reference: order.reference } do %>
+      <i class="fa fa-eye"></i>
+    <% end %>
+    &nbsp;&nbsp;
+    <% if order.name == 'administrador' %>
+      <%= link_to [:admin, order], method: :delete, data: { confirm: 'Tem certeza?' } do %>
+        <i class="fa fa-times"></i>
+      <% end %>
+    <% end %>
+  </td>
+</tr>
+
+<tr class="order-description" id="order-description-<%= order.reference %>">
+  <td colspan="7">
+    <div>
+      <div class="center-align order-reference-highlight">
+        <h4>Código da compra</h4>
+        <h5><%= order.reference %></h5>
+      </div>
+      <p class="center-align">Compra efetuada em <%= order.created_at.strftime('%d/%m/%Y %H:%M') %>h</p>
+    </div>
+  </td>
+</tr>

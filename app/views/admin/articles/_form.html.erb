@@ -1,0 +1,51 @@
+<%= form_for([:admin, article]) do |f| %>
+  <% if article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+      <% article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% label_class = article.new_record? ? '' : 'active' %>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.label 'Título', class: label_class %>
+      <%= f.text_field :title %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.label 'descrição', class: label_class %>
+      <%= f.text_field :description %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.label 'Imagem na home', class: label_class %>
+      <%= f.text_field :main_image_url %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.cktext_area :body, rows: 10 %>
+    </div>
+  </div>
+
+  <p>
+    &nbsp;
+  </p>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.submit 'Salvar', class: 'btn waves-effect waves-light right yellow-button' %>
+    </div>
+  </div>
+<% end %>

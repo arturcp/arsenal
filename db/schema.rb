@@ -10,10 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170322123946) do
+ActiveRecord::Schema.define(version: 20170528150509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.string   "title"
+    t.string   "body"
+    t.string   "description"
+    t.string   "main_image_url"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "campaign_messages", force: :cascade do |t|
+    t.integer  "campaign_id"
+    t.string   "order_reference"
+    t.string   "author"
+    t.string   "email"
+    t.string   "message"
+    t.boolean  "status"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "campaign_news", force: :cascade do |t|
+    t.integer  "campaign_id"
+    t.string   "text"
+    t.string   "link"
+    t.string   "link_text"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "campaigns", force: :cascade do |t|
     t.string   "name"
@@ -21,12 +50,14 @@ ActiveRecord::Schema.define(version: 20170322123946) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.integer  "campaign_type"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "title"
     t.string   "subtitle"
     t.string   "video_url"
     t.string   "main_image_url"
+    t.boolean  "display",        default: true
+    t.string   "closing_text",   default: ""
   end
 
   create_table "items", force: :cascade do |t|
@@ -43,10 +74,13 @@ ActiveRecord::Schema.define(version: 20170322123946) do
 
   create_table "orders", force: :cascade do |t|
     t.string   "reference"
-    t.jsonb    "items",      default: {}, null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.jsonb    "items",       default: {}, null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.decimal  "price"
+    t.string   "name"
+    t.string   "email"
+    t.integer  "campaign_id"
   end
 
   create_table "transactions", force: :cascade do |t|

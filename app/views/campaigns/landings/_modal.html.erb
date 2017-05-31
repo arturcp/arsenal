@@ -1,0 +1,14 @@
+<div id="campaign-closing-text" class="modal">
+  <div class="modal-close">
+    <i class="fa fa-close"></i>
+  </div>
+  <div class="closing-text-modal">
+    <h4 class="center-align">Esta campanha já terminou</h4>
+
+    <% if campaign.closing_text %>
+      <p>
+        <%= raw(campaign.closing_text) %>
+      </p>
+    <% end %>
+  </div>
+</div>

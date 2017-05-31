@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col s12">
+    <div class="card-panel">
+      <table class="striped" data-orders-list>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Produtos</th>
+            <th>Valor total</th>
+            <th>Data</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% campaign.orders.each do |order| %>
+            <%= render 'order_row', order: order %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%= link_to '#new-order-modal' do %>
+  <%= button_tag 'Cadastrar nova compra', class: 'btn yellow-button waves-effect waves-light right' %>
+<% end %>
+
+<%= render 'new_order', campaign: campaign %>

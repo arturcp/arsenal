@@ -1,0 +1,17 @@
+#collaborators-modal {
+  .modal-close {
+    float: right;
+    margin-right: 10px;
+  }
+
+  .collaborators-modal-content {
+    padding: 35px;
+    color: #000;
+  }
+
+  h4 {
+    font-weight: bold;
+    font-size: 25px;
+    color: $landing-primary;
+  }
+}

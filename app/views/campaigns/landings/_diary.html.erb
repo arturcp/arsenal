@@ -1,0 +1,33 @@
+<% news_count = campaign.campaign_news.count %>
+
+<% if news_count.positive? %>
+  <div class="row">&nbsp;</div>
+
+  <div class="row campaign-diary">
+    <% campaign.campaign_news.each_with_index do |news, index| %>
+      <div class="col s12 m6 <%= 'hidden' if index > 1 %>">
+        <div class="card left-align">
+          <div class="card-content">
+            <div class="text-right campaign-diary-created-at">
+              <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+              Criado em <%= news.created_at.strftime('%d/%m/%Y')%>
+            </div>
+            <hr />
+            <div class="campaign-diary-text"><%= text_to_html(news.text) %></div>
+          </div>
+
+          <div class="card-action center-align">
+            <%= link_to news.link_text, news.link, target: '_blank' %>
+          </div>
+
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <% if campaign.campaign_news.count > 2 %>
+    <div class="campaign-news-expand-button">
+      <a href="javascript://">Veja mais notícias</a>
+    </div>
+  <% end %>
+<% end %>

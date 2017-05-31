@@ -1,0 +1,65 @@
+<div class="col s12 m6 l8">
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">Diário da campanha</span>
+
+      <%= form_for [:admin, CampaignNews.new] do |f| %>
+        <%= f.hidden_field :campaign_id, value: campaign.id %>
+        <div class="campaign-news-form">
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.label 'Texto' %>
+              <%= f.text_area :text, class: 'materialize-textarea' %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <%= f.label 'Link (opcional)' %>
+              <%= f.text_field :link %>
+            </div>
+            <div class="input-field col s6">
+              <%= f.label 'Texto do link (opcional)' %>
+              <%= f.text_field :link_text %>
+            </div>
+          </div>
+        </div>
+        <div class="row campaign-news-buttons">
+          <div class="col s12 right-align">
+            <%= f.submit 'Publicar', class: 'btn waves-effect waves-light right yellow-button' %>
+          </div>
+        </div>
+      <% end %>
+
+      <p>&nbsp;</p>
+      <hr />
+      <p>&nbsp;</p>
+
+      <div class="row">
+        <div class="col s12">
+          <% campaign.campaign_news.each_with_index do |news, index| %>
+            <div class="row" data-campaign-news>
+              <div class="col s12">
+                <div class="card campaign-news-card <%= 'odd' if index.odd? %>">
+                  <div class="card-content">
+                    <div class="right-align campaign-diary-created-at">
+                      <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                      Criado em <%= news.created_at.strftime('%d/%m/%Y')%> &nbsp;&nbsp;
+                      <a href="javascript:;" data-delete-campaign-news="<%= admin_campaign_news_path(news) %>"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    </div>
+                    <hr />
+                    <div class="campaign-diary-text"><%= text_to_html(news.text) %></div>
+                  </div>
+
+                  <div class="card-action center-align">
+                    <%= link_to news.link_text, news.link, target: '_blank' %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+#campaign-messages-modal {
+  min-height: 400px;
+  width: 70%;
+
+  .modal-close {
+    text-align: right;
+    margin-right: 5px;
+  }
+
+  .campaign-messages-list {
+    height: 300px;
+    overflow: scroll;
+  }
+
+  [data-messages-tabs] {
+    padding: 20px;
+  }
+
+  .approve-message i {
+    color: #3d963d;
+  }
+
+  .reject-message i {
+    color: #e01818;
+  }
+}

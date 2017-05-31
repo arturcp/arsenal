@@ -21,7 +21,7 @@ class ShoppingCart
   end
 
   def total
-    @cart.values.reduce(0, &:+) || 0
+    @cart.values.reduce(0, :+) || 0
   end
 
   def price
