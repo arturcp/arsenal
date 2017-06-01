@@ -13,31 +13,15 @@ def description
 end
 
 IMAGES = {
-  christmas: 'http://trendytheme.net/demo/matrox/assets/img/banner/banner-7.jpg',
-  bread: 'http://cdn1.mundodastribos.com/6370-receita-panetone-fazer-panetone-caseiro.jpg',
-  wine: 'http://www.brechando.com/wp-content/uploads/2016/05/vinho.jpg',
-  easter: 'http://blogs.gazetaonline.com.br/blogdastartup/wp-content/uploads/sites/13/2015/04/ovos-pascoa-coloridos-1.jpg',
-  chocolate: 'http://ipiauonline.com.br/wp-content/uploads/2016/10/chocolate-e-bombom-bombons-2.jpg',
-  construction: 'http://www.texturacorp.com/texturacorp/assets/Image/Blog%20-%20Bid%20Management/way%20to%20make%20construction%20business%20more%20profitable.jpg',
-  paint: 'http://www.siote.com.br/blog/wp-content/uploads/2016/04/12.jpg'
+  christmas: 'zifyb3fxkul6dhszrbz1.jpg',
+  bread: 'Panetone_l2bh3e.jpg',
+  wine: 'idw3iprkwfek8cksrri7.jpg',
+  easter: 'jk235xkvzrsemhszkqlk.jpg',
+  chocolate: 'abaf7ybmvyv79q3q4w0m.jpg',
+  construction: 't3odiwaf58nxgt9l4i6z.jpg',
+  paint: 'wnjt5pksgrxy7jkxrwfa.jpg',
+  article: 'arpoynjz4pifduowuylc.jpg'
 }
-
-CDN_IMAGES = {
-  christmas: 'banner-7.jpg',
-  bread: '6370-receita-panetone-fazer-panetone-caseiro.jpg',
-  wine: 'vinho.jpg',
-  easter: 'ovos-pascoa-coloridos-1.jpg',
-  chocolate: 'chocolate-e-bombom-bombons-2.jpg',
-  construction: 'construction.jpg',
-  paint: 'paint.jpg'
-}
-
-# CDN = 'http://localhost:8000/'
-CDN = nil
-
-def image_for(key)
-  CDN.present? ? URI::join(CDN, CDN_IMAGES[key]) : IMAGES[key]
-end
 
 christmas = Campaign.create!(
   name: 'Natal 2016',
@@ -47,28 +31,34 @@ christmas = Campaign.create!(
   start_date: Date.parse('2016-11-01'),
   end_date: Date.parse('2016-12-25'),
   campaign_type: Campaign::TERMOMETER,
-  main_image_url: image_for(:christmas),
   video_url: 'https://www.youtube.com/watch?v=EK_OqnXg71U',
   closing_text: 'Agradecemos de coração a todos que puderam nos ajudar a transformar esse sonho em realidade. Basta um pouco de cada um para que possamos construir um mundo melhor, e para isso nada melhor do que compartilharmos uma ceia de natal.'
 )
 
-christmas.items.create!(
+christmas[:main_image_url] = IMAGES[:christmas]
+christmas.save
+
+item = christmas.items.create!(
   name: 'Panetone',
   description: 'O panetone é um alimento tradicional da época de Natal, de origem milanesa, do norte da Itália. Várias lendas tentam explicar a sua origem. O pão doce de natal possui fragrância discreta de baunilha e recheio de frutas secas, tais como damasco, laranja, limão, figo, maçã, cidra e a uva passa.',
-  image_url: image_for(:bread),
   target: 300,
   price: 50.0,
   current_amount: 130
 )
 
-christmas.items.create!(
+item[:image_url] = IMAGES[:bread]
+item.save
+
+item = christmas.items.create!(
   name: 'Vinho',
   description: 'Vinho é, genericamente, uma bebida alcoólica produzida por fermentação do sumo de uva',
-  image_url: image_for(:wine),
   target: 100,
   price: 70.0,
   current_amount: 40
 )
+
+item[:image_url] = IMAGES[:wine]
+item.save
 
 christmas.campaign_news.create(text: 'Compartilhem com seus amigos, ajude a campanha a atingir o maior número de pessoas possíveis.', link: 'http://www.facebook.com', link_text: 'Compartilhe')
 christmas.campaign_news.create(text: 'Conseguimos o suficiente para acolhermos 25 pessoas!')
@@ -81,18 +71,22 @@ easter = Campaign.create!(
   start_date: 100.years.ago,
   end_date: 100.years.from_now,
   campaign_type: Campaign::CIRCULAR_PROGRESS,
-  main_image_url: image_for(:easter),
   video_url: 'https://www.youtube.com/watch?v=2_W-jAuzUhY'
 )
 
-easter.items.create!(
+easter[:main_image_url] = IMAGES[:easter]
+easter.save
+
+item = easter.items.create!(
   name: 'Chocolate',
   description: 'Páscoa não é páscoa sem chocolate!',
-  image_url: image_for(:chocolate),
   target: 100,
   price: 20.0,
   current_amount: 5
 )
+
+item[:image_url] = IMAGES[:chocolate]
+item.save
 
 construction = Campaign.create!(
   name: 'Reforma da capela',
@@ -102,30 +96,37 @@ construction = Campaign.create!(
   start_date: Time.zone.now,
   end_date: 5.years.from_now,
   campaign_type: Campaign::CIRCULAR_PROGRESS,
-  main_image_url: image_for(:construction),
   video_url: 'https://www.youtube.com/watch?v=rdl45XMmD1g',
   display: false
 )
 
-construction.items.create!(
+construction[:main_image_url] = IMAGES[:construction]
+construction.save
+
+item = construction.items.create!(
   name: 'Tinta',
   description: 'Vamos pintar a parede externa da capela',
-  image_url: image_for(:paint),
   target: 100,
   price: 5,
   current_amount: 0
 )
 
-Article.create!(
+item[:image_url] = IMAGES[:paint]
+item.save
+
+article = Article.create!(
   title: 'Inauguração',
   description: 'Este é um momento único para nós aqui do Arsenal. Vamos ajudar quem precisa! Nos próximos dias daremos início a algumas campanhas de arrecadação que são muito importantes para manter nosso trabalho',
-  main_image_url: 'http://lazypenguins.com/wp-content/uploads/2015/09/The-Enchanted-River-in-Surigao.jpg',
+  main_image_url: 'image/upload/v1496276557/arpoynjz4pifduowuylc.jpg',
   body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed fringilla risus. Curabitur sit amet laoreet ligula, tempor rutrum justo. Vivamus gravida tincidunt nunc, sed egestas nunc iaculis nec. Nullam eget nulla nec arcu viverra tincidunt. Nunc tempor a augue nec iaculis. Morbi mollis efficitur enim et elementum. Nunc commodo imperdiet tellus vel imperdiet. Etiam et accumsan neque. Donec suscipit et nisl ac laoreet.
   Nullam facilisis augue vitae velit fringilla, nec tempor orci gravida. In pretium porttitor quam eget placerat. Phasellus quis suscipit magna. Sed pharetra magna id sollicitudin gravida. Aenean pulvinar ornare scelerisque. Duis a tincidunt purus, sed mollis ligula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
   Curabitur iaculis risus at blandit scelerisque. Sed pharetra justo quis eleifend elementum. Duis pretium lectus non commodo venenatis. Nulla vitae enim mauris. Curabitur hendrerit tortor sagittis tellus pellentesque dictum. Nulla accumsan ultricies dolor, id tempor orci mollis ac. Nunc eleifend, mi sit amet vulputate pretium, arcu lacus tincidunt quam, non mollis diam mi id turpis. In et felis eget elit vehicula aliquet et aliquet nulla. Nam nec finibus quam, ac egestas libero.
   Maecenas blandit facilisis tempus. Sed non lacinia enim. Etiam vitae metus tincidunt, sollicitudin nisi non, ultrices risus. Mauris volutpat dolor nulla, id malesuada nulla ultrices non. Morbi pharetra justo nec sagittis luctus. Duis luctus ac est et tristique. Praesent efficitur sem ac dui euismod luctus. Ut interdum hendrerit dui, in vulputate diam imperdiet eu.
   Proin aliquet ligula fringilla tortor condimentum dignissim. Proin ut dui non lorem lobortis iaculis. Nam non egestas justo. Aliquam erat volutpat. In tincidunt tellus quis lacinia gravida. Quisque tincidunt porttitor erat, vel dignissim est mollis vel. Nullam vitae enim nec ex tempus efficitur. Integer quis sapien pulvinar, efficitur justo in, iaculis tellus. Phasellus id varius arcu. Aliquam eget velit quis velit elementum consectetur eu eu risus. Cras laoreet fringilla lacus a dignissim. Quisque cursus nisl purus, eu interdum elit faucibus quis. Proin egestas turpis erat, in efficitur augue viverra in. Nunc lacinia faucibus nisi, ac tristique massa auctor a. Praesent sed dui quam.'
 )
+
+article[:main_image_url] = IMAGES[:article]
+article.save
 
 CampaignMessage.create!(
   campaign_id: easter.id,

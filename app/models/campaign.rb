@@ -1,4 +1,6 @@
 class Campaign < ApplicationRecord
+  mount_uploader :main_image_url, ImageUploader
+
   has_many :items
   has_many :orders
   has_many :campaign_news, -> { order('created_at desc') }

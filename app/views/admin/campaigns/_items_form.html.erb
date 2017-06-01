@@ -8,7 +8,7 @@
       </p>
     </div>
     <div class="card-action" data-url="%<= admin_items_path %>" data-campaign-id="<%= @campaign.id %>">
-      <%= form_for([:admin, Item.new], class: 'col s12') do |f| %>
+      <%= form_for([:admin, Item.new], class: 'col s12', html: { multipart: true } ) do |f| %>
         <%= f.hidden_field :campaign_id, value: @campaign.id %>
         <%= hidden_field_tag :campaign_id, @campaign.id %>
         <div class="row">
@@ -17,8 +17,12 @@
             <%= f.text_field :name %>
           </div>
           <div class="input-field col s12">
-            <%= f.label 'Imagem' %>
-            <%= f.text_field :image_url %>
+            <p>
+              <%= f.label 'Imagem' %>
+            </p><br /><br />
+
+            <%= f.hidden_field(:image_url_cache) %>
+            <%= f.file_field(:image_url) %>
           </div>
           <div class="input-field col s12">
             <%= f.label 'Preço (em reais)' %>
@@ -31,7 +35,7 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <%= f.submit 'Salvar', class: 'btn waves-effect waves-light right yellow-button' %>
+            <%= render 'admin/button', text: 'Salvar' %>
           </div>
         </div>
       <% end %>

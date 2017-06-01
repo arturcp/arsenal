@@ -24,7 +24,7 @@
 </div>
 
 <%= link_to '#new-order-modal' do %>
-  <%= button_tag 'Cadastrar nova compra', class: 'btn yellow-button waves-effect waves-light right' %>
+  <%= render 'admin/button', text: 'Cadastrar nova compra' %>
 <% end %>
 
 <%= render 'new_order', campaign: campaign %>
