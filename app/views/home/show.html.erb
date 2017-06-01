@@ -10,6 +10,10 @@
           <h5>Publicado em <%= @article.created_at.strftime("%d/%m/%Y") %></h5>
           <br>
 
+          <div>
+            <%= image_tag @article.main_image_url, class: 'img-fluid' if @article.main_image_url %>
+          </div>
+
           <p><%= raw(@article.body) %></p>
 
           <%= link_to home_index_path do %>
