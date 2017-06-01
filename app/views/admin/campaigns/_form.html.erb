@@ -44,8 +44,15 @@
     <div class="row">
       <div class="input-field col s12">
         <p>
-          <%= f.label 'Imagem principal', class: label_class %>
-        </p><br />
+          <%= f.label 'Imagem principal' %>
+        </p><br /><br />
+
+        <% if campaign.main_image_url %>
+          <div>
+            <%= image_tag campaign.main_image_url, class: 'thumbnail' %>
+          </div>
+        <% end %>
+
         <%= f.hidden_field(:main_image_url_cache) %>
         <%= f.file_field(:main_image_url) %>
       </div>
