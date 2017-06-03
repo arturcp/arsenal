@@ -2,17 +2,17 @@
   <div class="col s12">
     <ul class="tabs">
       <li class="tab col s6">
-        <a class="active" href="#campaign-list-tab">Campanhas</a>
+        <a class="active" href="#<%= Admin::Tabs::CAMPAIGN_LIST_TAB %>">Campanhas</a>
       </li>
       <li class="tab col s6">
-        <a href="#new-campaign-tab">Nova campanha</a>
+        <a href="#<%= Admin::Tabs::NEW_CAMPAIGN_TAB %>">Nova campanha</a>
       </li>
     </ul>
   </div>
-  <div id="campaign-list-tab" class="col s12">
+  <div id="<%= Admin::Tabs::CAMPAIGN_LIST_TAB %>" class="col s12">
     <%= render 'campaigns_list', campaigns: @campaigns %>
   </div>
-  <div id="new-campaign-tab" class="col s12">
+  <div id="<%= Admin::Tabs::NEW_CAMPAIGN_TAB %>" class="col s12">
     <div class="row">
       <div class="col s12">
         <div class="card-panel">

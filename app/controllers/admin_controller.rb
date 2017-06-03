@@ -1,4 +1,19 @@
 class AdminController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :activate_tab
+
   layout 'admin'
+
+  protected
+
+  def tab_after_redirect=(tab)
+    session[:tab_to_open] = tab
+  end
+
+  private
+
+  def activate_tab
+    @active_tab = session[:tab_to_open]
+    session[:tab_to_open] = nil
+  end
 end

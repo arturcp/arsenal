@@ -4,12 +4,19 @@ module Admin
 
     def create
       Item.create!(valid_params)
+      self.tab_after_redirect = Admin::Tabs::ITEMS_LIST_TAB
+
       redirect_to [:admin, @campaign], notice: 'Item criado com sucesso.'
     end
 
     def destroy
       item = Item.find(params[:id])
-      item.destroy if item
+
+      if item
+        item.destroy
+        self.tab_after_redirect = Admin::Tabs::ITEMS_LIST_TAB
+      end
+
       redirect_to [:admin, item.campaign], notice: 'Item removido com sucesso.'
     end
 

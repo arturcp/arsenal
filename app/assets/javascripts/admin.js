@@ -21,4 +21,10 @@
 
 $(document).on('ready page:load', function() {
   page.dispatch();
+
+  var activeTab = $('#active-tab');
+
+  if (activeTab && activeTab.length > 0) {
+    $('[href="#items-list-tab"]').trigger('click');
+  }
 });

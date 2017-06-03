@@ -13,23 +13,26 @@
         <%= hidden_field_tag :campaign_id, @campaign.id %>
         <div class="row">
           <div class="input-field col s12">
-            <%= f.label 'Nome' %>
+            <%= f.label 'Nome', class: 'floating' %>
             <%= f.text_field :name %>
           </div>
           <div class="input-field col s12">
             <p>
               <%= f.label 'Imagem' %>
-            </p><br /><br />
+            </p><br />
 
-            <%= f.hidden_field(:image_url_cache) %>
-            <%= f.file_field(:image_url) %>
+            <p>
+              <%= f.hidden_field(:image_url_cache) %>
+              <%= f.file_field(:image_url) %>
+            </p>
+            <br />
           </div>
           <div class="input-field col s12">
-            <%= f.label 'Preço (em reais)' %>
+            <%= f.label 'Preço (em reais)', class: 'floating' %>
             <%= f.text_field :price %>
           </div>
           <div class="input-field col s12">
-            <%= f.label 'Quantidade esperada' %>
+            <%= f.label 'Quantidade esperada', class: 'floating' %>
             <%= f.number_field :target, min: 0 %>
           </div>
         </div>

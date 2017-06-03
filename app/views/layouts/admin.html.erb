@@ -36,5 +36,9 @@
         </section>
       </div>
     </div>
+
+    <% if @active_tab %>
+      <input type="hidden" id="active-tab" value="<%= @active_tab %>" />
+    <% end %>
   </body>
 </html>
