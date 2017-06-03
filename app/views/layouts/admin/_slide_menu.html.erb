@@ -12,16 +12,22 @@
         </div>
       </div>
     </li>
-    <li class="bold <%= "active" if @current_tab == 'campaigns' %>">
+    <li class="bold <%= "active" if @current_menu == 'campaigns' %>">
       <%= link_to admin_campaigns_path, class: 'waves-effect waves-cyan' do %>
         <i class="fa fa-folder-open"></i>
         Campanhas
       <% end %>
     </li>
-    <li class="bold <%= "active" if @current_tab == 'articles' %>">
+    <li class="bold <%= "active" if @current_menu == 'articles' %>">
       <%= link_to admin_articles_path, class: 'waves-effect waves-cyan' do %>
         <i class="fa fa-newspaper-o" aria-hidden="true"></i>
         Notícias
+      <% end %>
+    </li>
+    <li class="bold <%= "active" if @current_menu == 'users' %>">
+      <%= link_to admin_users_path, class: 'waves-effect waves-cyan' do %>
+        <i class="fa fa-user-o" aria-hidden="true"></i>
+        Usuários
       <% end %>
     </li>
     <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;">

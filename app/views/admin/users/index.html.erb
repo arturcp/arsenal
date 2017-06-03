@@ -1,0 +1,33 @@
+<h1>Usuários</h1>
+
+<table class="striped articles-list">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Email</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<div class="row">
+  <div class="input-field col s12">
+    <%= link_to new_user_registration_path do %>
+      <%= render 'admin/button', text: 'Novo' %>
+    <% end %>
+  </div>
+</div>

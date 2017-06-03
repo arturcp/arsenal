@@ -13,6 +13,7 @@ gem 'uglifier', '>= 1.3.0'
 
 # Authentication
 gem 'devise'
+gem 'devise-i18n'
 
 # Image upload
 gem 'carrierwave'
