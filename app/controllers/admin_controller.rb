@@ -10,6 +10,10 @@ class AdminController < ActionController::Base
     session[:tab_to_open] = tab
   end
 
+  def tab_after_render=(tab)
+    @active_tab = tab
+  end
+
   private
 
   def activate_tab

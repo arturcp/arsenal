@@ -26,6 +26,8 @@ module Admin
         redirect_to [:admin, @campaign], notice: 'Campanha criada com sucesso.'
       else
         @campaigns = Campaign.all
+
+        self.tab_after_render = Admin::Tabs::NEW_CAMPAIGN_TAB
         render :index
       end
     end
@@ -34,6 +36,7 @@ module Admin
       if @campaign.update(campaign_params)
         redirect_to [:admin, @campaign], notice: 'Campanha atualizada com sucesso.'
       else
+        self.tab_after_render = Admin::Tabs::NEW_CAMPAIGN_TAB
         render :edit
       end
     end

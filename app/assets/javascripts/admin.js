@@ -25,6 +25,7 @@ $(document).on('ready page:load', function() {
   var activeTab = $('#active-tab');
 
   if (activeTab && activeTab.length > 0) {
-    $('[href="#items-list-tab"]').trigger('click');
+
+    $('[href="#' + activeTab.val() + '"]').trigger('click');
   }
 });
