@@ -1,0 +1,17 @@
+.yellow-button {
+  background-color: $secondary-color-light;
+  color: $main-color-dark;
+
+  &:hover {
+    background-color: $secondary-color-light-opacity;
+  }
+}
+
+.purple-button {
+  background-color: $main-color-normal;
+  color: #fff;
+
+  &:hover {
+    background-color: $main-color-dark;
+  }
+}

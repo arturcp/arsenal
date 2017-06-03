@@ -17,15 +17,6 @@ table.striped > tbody > tr:nth-child(odd) {
   }
 }
 
-.yellow-button {
-  background-color: $secondary-color-light;
-  color: $main-color-dark;
-
-  &:hover {
-    background-color: $secondary-color-light-opacity;
-  }
-}
-
 .item__image-thumbnail {
   max-width: 60px;
 }

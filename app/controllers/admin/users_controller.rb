@@ -9,6 +9,10 @@ module Admin
     end
 
     def show
+      @user = current_user
+      self.tab_after_render = Admin::Tabs::NEW_USER_TAB
+
+      render :index
     end
 
     def edit

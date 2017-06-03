@@ -1,3 +1,5 @@
-<button class="btn waves-effect waves-light right yellow-button" type="submit" name="action">
+<% button_class ||= 'yellow-button' %>
+
+<button class="btn waves-effect waves-light right <%= button_class %>" type="submit" name="action">
   <%= text %>
 </button>
