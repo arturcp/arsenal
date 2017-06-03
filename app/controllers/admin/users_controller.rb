@@ -2,14 +2,16 @@ module Admin
   class UsersController < AdminController
     before_action :set_current_menu
     before_action :set_user, only: [:show, :edit, :update, :destroy]
+    before_action :set_users_list
 
     def index
-      @users = sorted_users
       @user = User.new
     end
 
+    def show
+    end
+
     def edit
-      @users = sorted_users
       self.tab_after_render = Admin::Tabs::NEW_USER_TAB
     end
 
@@ -19,8 +21,6 @@ module Admin
       if @user.save
         redirect_to admin_users_path
       else
-        @users = sorted_users
-
         self.tab_after_render = Admin::Tabs::NEW_USER_TAB
 
         render :index
@@ -60,6 +60,10 @@ module Admin
 
     def set_user
       @user = User.find(params[:id].to_i)
+    end
+
+    def set_users_list
+      @users = sorted_users
     end
 
     def safe_params
