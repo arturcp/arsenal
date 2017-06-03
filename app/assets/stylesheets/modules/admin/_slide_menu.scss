@@ -2,20 +2,6 @@
   width: 240px;
 }
 
-.marco-avatar {
-  width: 60px;
-  height: 60px;
-  background-image: url(image_path('marco-avatar.png'));
-  background-size: 60px;
-}
-
-.marco-avatar--small {
-  width: 45px;
-  height: 45px;
-  background-image: url(image_path('marco-avatar.png'));
-  background-size: 45px;
-}
-
 .user-details,
 ul.side-nav.leftside-navigation li.user-details:hover {
   background-color: $main-color-stress !important;

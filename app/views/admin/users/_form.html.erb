@@ -1,0 +1,65 @@
+<div class="row">
+  <% if user.errors.any? %>
+    <div id="card-alert" class="card red lighten-5">
+      <div class="card-content red-text">
+        <p><%= pluralize(user.errors.count, 'erro') %> encontrado:</p>
+        <ul>
+          <% user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+      <button type="button" class="close red-text" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+  <% end %>
+
+  <%= form_for [:admin, user], html: { multipart: true } do |f| %>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.label 'Nome', class: 'floating' %>
+        <%= f.text_field :name %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.label 'Email', class: 'floating' %>
+        <%= f.text_field :email %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.label 'Senha', class: 'floating' %>
+        <%= f.password_field :password %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.label 'Confirmação de senha', class: 'floating' %>
+        <%= f.password_field :password_confirmation %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <p>
+          <%= f.label 'Avatar' %>
+        </p><br /><br />
+
+        <% if user.avatar_url.present? %>
+          <div>
+            <%= cl_image_tag(user.avatar_url, height: 60, width: 60, crop: "fill", quality: 100) %>
+          </div>
+        <% end %>
+
+        <%= f.hidden_field(:avatar_url_cache) %>
+        <%= f.file_field(:avatar_url) %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= render 'admin/button', text: 'Salvar' %>
+      </div>
+    </div>
+  <% end %>
+</div>
