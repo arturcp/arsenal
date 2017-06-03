@@ -1,8 +1,7 @@
 module Admin
   class CampaignsController < AdminController
     before_action :set_campaign, only: [:show, :edit, :update, :destroy]
-    before_action :set_current_tab
-    before_action :authenticate_user!
+    before_action :set_current_menu
 
     def index
       @campaigns = Campaign.all
@@ -52,8 +51,8 @@ module Admin
       @campaign = Campaign.find(params[:id])
     end
 
-    def set_current_tab
-      @current_tab = 'campaigns'
+    def set_current_menu
+      @current_menu = 'campaigns'
     end
 
     def campaign_params

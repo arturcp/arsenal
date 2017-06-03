@@ -1,7 +1,7 @@
 module Admin
   class ArticlesController < AdminController
     before_action :set_article, only: [:show, :edit, :update, :destroy]
-    before_action :set_current_tab
+    before_action :set_current_menu
 
     def index
       @articles = Article.all
@@ -45,8 +45,8 @@ module Admin
       @article = Article.find(params[:id])
     end
 
-    def set_current_tab
-      @current_tab = 'articles'
+    def set_current_menu
+      @current_menu = 'articles'
     end
 
     def article_params

@@ -1,46 +1,55 @@
 <h1>Notícias</h1>
 
-<table class="striped articles-list">
-  <thead>
-    <tr>
-      <th>
-        Título
-      </th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td>
-          <%= article.title %>
-        </td>
-
-        <td width="80">
-          <%= link_to [:admin, article] do %>
-            <i class="fa fa-eye"></i>
-          <% end %>
-          &nbsp;&nbsp;
-          <%= link_to edit_admin_article_path(article) do %>
-            <i class="fa fa-pencil"></i>
-          <% end %>
-          &nbsp;&nbsp;
-          <%= link_to [:admin, article], method: :delete, data: { confirm: 'Tem certeza?' } do %>
-            <i class="fa fa-times"></i>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
 <div class="row">
-  <div class="input-field col s12">
-    <%= link_to new_admin_article_path do %>
-      <%= button_tag 'Nova notícia', class: 'btn waves-effect waves-light right yellow-button' %>
-    <% end %>
+  <div class="col s12">
+    <div class="card-panel">
+
+      <table class="striped articles-list">
+        <thead>
+          <tr>
+            <th>
+              Título
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @articles.each do |article| %>
+            <tr>
+              <td>
+                <%= article.title %>
+              </td>
+
+              <td width="80">
+                <%= link_to [:admin, article] do %>
+                  <i class="fa fa-eye"></i>
+                <% end %>
+                &nbsp;&nbsp;
+                <%= link_to edit_admin_article_path(article) do %>
+                  <i class="fa fa-pencil"></i>
+                <% end %>
+                &nbsp;&nbsp;
+                <%= link_to [:admin, article], method: :delete, data: { confirm: 'Tem certeza?' } do %>
+                  <i class="fa fa-times"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <br>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <%= link_to new_admin_article_path do %>
+            <%= button_tag 'Nova notícia', class: 'btn waves-effect waves-light right yellow-button' %>
+          <% end %>
+        </div>
+      </div>
+
+
+    </div>
   </div>
 </div>

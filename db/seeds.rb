@@ -1,8 +1,20 @@
-User.create!(
+admin = User.create!(
+  email: 'admin@arsenal.com.br',
+  name: 'Admin',
+  password: ENV.fetch('ADMIN_PASSWORD')
+)
+
+admin[:avatar_url] = 'admin_avatar_mi31bm.jpg'
+admin.save
+
+marco = User.create!(
   email: 'marco@arsenal.com.br',
   name: 'Marco',
-  password: '12345678'
+  password: ENV.fetch('ADMIN_PASSWORD')
 )
+
+marco[:avatar_url] = 'marco-avatar_owgr1e.png'
+marco.save
 
 def description
   <<~HEREDOC

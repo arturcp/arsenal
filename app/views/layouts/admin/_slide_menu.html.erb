@@ -3,35 +3,38 @@
     <li class="user-details">
       <div class="row">
         <div class="col col s4 m4 l4">
-          <div class="marco-avatar"></div>
+          <div class="logged-user-avatar">
+            <%= cl_image_tag(current_user.avatar_url, height: 60, width: 60, crop: "fill", quality: 100) %>
+          </div>
         </div>
         <div class="col col s8 m8 l8">
-          <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">Marco<i class="fa fa-angle-down fa-1 right"></i></a>
+          <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">
+            Olá,
+            <i class="fa fa-angle-down fa-1 right"></i>
+          </a>
+
           <%= render 'layouts/admin/profile_dropdown' %>
-          <p class="user-roal">Administrator</p>
+
+          <p class="user-role"><%= current_user.name %></p>
         </div>
       </div>
     </li>
-    <li class="bold <%= "active" if @current_tab == 'campaigns' %>">
+    <li class="bold <%= "active" if @current_menu == 'campaigns' %>">
       <%= link_to admin_campaigns_path, class: 'waves-effect waves-cyan' do %>
         <i class="fa fa-folder-open"></i>
         Campanhas
       <% end %>
     </li>
-    <li class="bold <%= "active" if @current_tab == 'articles' %>">
+    <li class="bold <%= "active" if @current_menu == 'articles' %>">
       <%= link_to admin_articles_path, class: 'waves-effect waves-cyan' do %>
         <i class="fa fa-newspaper-o" aria-hidden="true"></i>
         Notícias
       <% end %>
     </li>
-    <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;">
-      <div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div>
-    </div>
-    <div class="ps-scrollbar-y-rail" style="top: 0px; height: 409px; right: 3px;">
-      <div class="ps-scrollbar-y" style="top: 0px; height: 127px;"></div>
-    </div>
-  </ul>
-  <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan">
-    <div class="marco-avatar--small"></div>
-  </a>
+    <li class="bold <%= "active" if @current_menu == 'users' %>">
+      <%= link_to admin_users_path, class: 'waves-effect waves-cyan' do %>
+        <i class="fa fa-user-o" aria-hidden="true"></i>
+        Usuários
+      <% end %>
+    </li>
 </aside>

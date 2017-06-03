@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :campaigns
     resources :articles
     resources :campaign_news
+    resources :users
     resources :items, only: [:create, :destroy]
     resources :orders, only: [:create, :destroy]
     resources :campaign_messages, only: [:show, :update]

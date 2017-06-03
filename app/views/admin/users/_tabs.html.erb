@@ -1,0 +1,32 @@
+<div class="row" id="users-list">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s6">
+        <a class="active" href="#<%= Admin::Tabs::USERS_LIST_TAB %>">Usuários</a>
+      </li>
+      <li class="tab col s6">
+        <a href="#<%= Admin::Tabs::NEW_USER_TAB %>">Criação/Edição</a>
+      </li>
+    </ul>
+  </div>
+
+  <div id="<%= Admin::Tabs::USERS_LIST_TAB %>" class="col s12">
+    <div class="row">
+      <div class="col s12">
+        <div class="card-panel">
+          <%= render 'users_list', users: users %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="<%= Admin::Tabs::NEW_USER_TAB %>" class="col s12">
+    <div class="row">
+      <div class="col s12">
+        <div class="card-panel">
+            <%= render 'form', user: user %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
