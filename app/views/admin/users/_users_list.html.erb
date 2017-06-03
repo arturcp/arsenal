@@ -13,15 +13,15 @@
   <tbody>
     <% users.each do |user| %>
       <tr>
-        <td class="td-for-avatar"><%= cl_image_tag(user.avatar_url, height: 60, width: 60, crop: "fill", quality: 100) %></td>
+        <td class="avatar-column"><%= cl_image_tag(user.avatar_url, height: 60, width: 60, crop: "fill", quality: 100) %></td>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
-        <td>
+        <td class="edit-user-column">
           <%= link_to edit_admin_user_path(user) do %>
             <i class="fa fa-pencil"></i>
           <% end if can_modify_user?(user) %>
         </td>
-        <td>
+        <td class="remove-user-column">
           <%= link_to admin_user_path(user), method: :delete, data: { confirm: 'Tem certeza?' } do %>
             <i class="fa fa-times"></i>
           <% end if !super_admin?(user) && can_modify_user?(user) %>

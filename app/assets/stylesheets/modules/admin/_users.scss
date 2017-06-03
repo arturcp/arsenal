@@ -1,6 +1,11 @@
 #users-list {
-  .td-for-avatar {
+  .avatar-column {
     width: 100px;
     padding-left: 10px;
+  }
+
+  .edit-user-column,
+  .remove-user-column {
+    width: 30px;
   }
 }
