@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery-ujs
 //= require materialize
-//= require waypoints/lib/jquery.waypoints
+//= require waypoints/lib/jquery.waypoints.js
 //= require magnific-popup
 //= require goalProgress.js/goalProgress
 //= require page
