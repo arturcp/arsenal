@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/arturcp/arsenal.svg?style=svg)](https://circleci.com/gh/arturcp/arsenal)
+
 # Pagseguro
 
 ## Testing on the sandbox
