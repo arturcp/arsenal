@@ -1,0 +1,12 @@
+database:
+  pre:
+    - 'cp .env.example .env'
+dependencies:
+  pre:
+    - gem install bundler --pre
+test:
+  pre:
+    - 'cp .env.example .env'
+machine:
+  ruby:
+    version: ruby-2.4.0
