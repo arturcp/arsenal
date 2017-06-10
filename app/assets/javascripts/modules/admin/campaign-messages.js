@@ -52,7 +52,7 @@ define('campaign-messages', ['message-status-updater'], function(MessageStatusUp
 
   fn._changeMessageStatus = function(event, status) {
     var element = $(event.currentTarget),
-        messageId = element.data(status + '-message');
+        messageId = element.data(status + '-message'),
         row = element.parents('tr:first'),
         self = this;
 

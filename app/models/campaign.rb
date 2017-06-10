@@ -33,7 +33,7 @@ class Campaign < ApplicationRecord
 
   def target_value
     items.reduce(0) do |sum, item|
-      sum += item.target * item.price
+      sum + item.target * item.price
     end
   end
 

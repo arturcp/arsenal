@@ -33,7 +33,7 @@ class CheckoutsController < ApplicationController
     else
       campaign_id = shopping_cart.items.first.campaign_id
 
-      order = Order.create!(
+      Order.create!(
         reference: payment.reference,
         items: payment.items,
         price: shopping_cart.price,
