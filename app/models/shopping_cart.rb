@@ -37,6 +37,18 @@ class ShoppingCart
     end
   end
 
+  # Public: Adds items in the chart based on a JSON. It is useful to update the
+  # cart content based on the data on the screen, since the user can change the
+  # quantity of each item using javascript.
+  #
+  # The expected format for the params is:
+  #
+  # {
+  #   items: {
+  #    { "1": { "quantity": 10 }, "2": { "quantity" :20 } }
+  # }
+  #
+  # Returns nothing.
   def build_from_params(params)
     @cart = {}
 

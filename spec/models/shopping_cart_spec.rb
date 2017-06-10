@@ -138,4 +138,20 @@ RSpec.describe ShoppingCart, type: :model do
       end
     end
   end
+
+  describe '#build_from_params' do
+    it 'builds a shopping cart from a json' do
+      shopping_cart = described_class.new({})
+      params = {
+        items: {
+          '1' => { quantity: 10 },
+          '2' => { quantity: 20 }
+        }.to_json
+      }
+
+      shopping_cart.build_from_params(params)
+      expect(shopping_cart.cart['1']).to eq(10)
+      expect(shopping_cart.cart['2']).to eq(20)
+    end
+  end
 end
