@@ -28,15 +28,32 @@ class Campaign < ApplicationRecord
   end
 
   def types
-    ['Termômetro', 'Progresso circular']
+    @types ||= ['Termômetro', 'Progresso circular']
   end
 
+  # Public: Calulcates the total value of the campaign by summing up all the prices
+  # of all the items
+  #
+  # Examples:
+  #   campaign.target_value
+  #   => 42
+  #
+  # Returns a decimal that represents the total value of the campaign.
   def target_value
     items.reduce(0) do |sum, item|
       sum + item.target * item.price
     end
   end
 
+  # Public: Calculates the value of the items that were already purchased.
+  #
+  # Examples:
+  #
+  #   campaign.current_amount
+  #   => 18
+  #
+  # Returns a decimal that represents the amount of money already paid for the
+  # campaign items.
   def current_amount
     items.reduce(0) do |sum, item|
       sum + item.current_amount * item.price
