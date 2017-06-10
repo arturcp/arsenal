@@ -7,16 +7,16 @@ module Admin
         reference: SecureRandom.uuid,
         items: items,
         price: items.first[:price],
-        name: params[:name],
+        name: safe_params[:name],
         email: '',
-        campaign_id: params[:campaign_id]
+        campaign_id: safe_params[:campaign_id]
       )
 
       render text: render_to_string(template: 'admin/campaigns/_order_row', locals: { order: order })
     end
 
     def destroy
-      order = Order.find(params[:id].to_i)
+      order = Order.find(safe_params[:id])
       campaign = order.campaign
       order.destroy
 
@@ -27,7 +27,7 @@ module Admin
 
     def items
       @items ||= begin
-        item = Item.find(params[:item_id])
+        item = Item.find(safe_params[:item_id])
 
         [
           {
@@ -39,6 +39,10 @@ module Admin
           }
         ]
       end
+    end
+
+    def safe_params
+      params.permit(:id, :name, :campaign_id, :item_id)
     end
   end
 end

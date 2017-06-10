@@ -3,14 +3,14 @@ module Admin
     before_action :set_campaign, only: [:create, :index]
 
     def create
-      Item.create!(valid_params)
+      Item.create!(item_params)
       self.tab_after_redirect = Admin::Tabs::ITEMS_LIST_TAB
 
       redirect_to [:admin, @campaign], notice: 'Item criado com sucesso.'
     end
 
     def destroy
-      item = Item.find(params[:id])
+      item = Item.find(safe_params[:id])
 
       if item
         item.destroy
@@ -22,12 +22,16 @@ module Admin
 
     private
 
-    def valid_params
+    def safe_params
+      params.permit(:campaign_id, :id)
+    end
+
+    def item_params
       params.require(:item).permit(:campaign_id, :name, :image_url, :price, :target)
     end
 
     def set_campaign
-      @campaign = Campaign.find(params[:campaign_id])
+      @campaign = Campaign.find(safe_params[:campaign_id])
     end
   end
 end

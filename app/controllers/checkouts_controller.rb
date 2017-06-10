@@ -3,7 +3,7 @@ class CheckoutsController < ApplicationController
   after_action :clear_shopping_cart, only: :show
 
   def show
-    @order = Order.find(params[:id])
+    @order = Order.find(safe_params[:id])
     @campaign = Campaign.find(shopping_cart.items.first.campaign_id)
 
     render :show, layout: 'landing'
@@ -37,16 +37,16 @@ class CheckoutsController < ApplicationController
         reference: payment.reference,
         items: payment.items,
         price: shopping_cart.price,
-        name: params[:name],
-        email: params[:email],
+        name: safe_params[:name],
+        email: safe_params[:email],
         campaign_id: campaign_id
       )
 
       CampaignMessage.create!(
         campaign_id: campaign_id,
-        name: params[:name],
-        email: params[:email],
-        message: params[:comments]
+        name: safe_params[:name],
+        email: safe_params[:email],
+        message: safe_params[:comments]
       )
 
       redirect_to response.url
@@ -57,5 +57,9 @@ class CheckoutsController < ApplicationController
 
   def clear_shopping_cart
     reset_session
+  end
+
+  def safe_params
+    params.permit(:id, :name, :email, :comments)
   end
 end
