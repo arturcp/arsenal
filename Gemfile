@@ -18,11 +18,13 @@ gem 'devise-i18n'
 # Image upload
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'mini_magick'
 
 # Front end gems
 gem 'ckeditor'
 gem 'font-awesome-rails'
 gem 'materialize-sass'
+gem 'non-stupid-digest-assets'
 gem 'will_paginate', '~> 3.1.0'
 
 # Payments
