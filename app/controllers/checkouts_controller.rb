@@ -44,10 +44,12 @@ class CheckoutsController < ApplicationController
 
       CampaignMessage.create!(
         campaign_id: campaign_id,
-        name: safe_params[:name],
+        author: safe_params[:name],
         email: safe_params[:email],
         message: safe_params[:comments]
       )
+
+      shopping_cart.items.clear
 
       redirect_to response.url
     end

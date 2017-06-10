@@ -6,13 +6,13 @@
   <div class="card-panel purple lighten-5 empty-cart">Seu carrinho está vazio :(</div>
 
   <div class="row text-center padding-top-50">
-    <%= link_to campaigns_landings_path(@campaign), class: 'waves-effect waves-light btn primary-blue' do %>
+    <%= link_to campaigns_landing_path(@campaign), class: 'waves-effect waves-light btn primary-blue' do %>
       <i class="fa fa-home"></i> Voltar e continuar comprando
     <% end %>
   </div>
 <% else %>
   <% @shopping_cart.items.each do |item| %>
-    <%= render 'checkout_item', item: item %>
+    <%= render 'checkout_item', item: item, campaign: @campaign %>
   <% end %>
 
   <%= form_tag checkouts_path do %>

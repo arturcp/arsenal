@@ -12,7 +12,9 @@ Rails.application.routes.draw do
     resources :campaign_messages, only: [:show, :update]
   end
 
-  resources :shopping_cart, only: [:index, :create, :destroy]
+  scope ':campaign_id' do
+    resources :shopping_cart, only: [:index, :create, :destroy]
+  end
   resources :checkouts, only: [:create, :show]
   resource :notifications, only: :create
   resources :home, only: [:index, :show]
