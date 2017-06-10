@@ -1,5 +1,7 @@
 [![CircleCI](https://circleci.com/gh/arturcp/arsenal.svg?style=svg)](https://circleci.com/gh/arturcp/arsenal)
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e271beab7a214c169bfac57d40fc6832)](https://www.codacy.com/app/arturcp/arsenal?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=arturcp/arsenal&amp;utm_campaign=Badge_Grade)
+
 # Pagseguro
 
 ## Testing on the sandbox
