@@ -20,7 +20,9 @@ define('message-status-updater', [], function() {
 
     var newRow = this._transferRow();
     this._toggleButtons(newRow);
-    this.row.hide('slow', function() { $(this).remove() });
+    this.row.hide('slow', function() {
+      $(this).remove();
+    });
   };
 
   fn._toggleButtons = function(row) {

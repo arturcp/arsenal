@@ -22,7 +22,7 @@ define('campaign-messages', ['message-status-updater'], function(MessageStatusUp
     var element = $(event.currentTarget),
         self = this;
 
-    this.url = element.data('update-messages-url')
+    this.url = element.data('update-messages-url');
 
     $.proxy(this._openModal, this);
 

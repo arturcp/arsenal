@@ -5,7 +5,7 @@ define('shopping-cart', [], function() {
     this.itemCounter = $('.shopping-cart__item-counter');
     this.checkoutSubmit = $('[data-checkout-submit]');
     this.checkoutRemoveButton = $('[data-checkout-delete-button]');
-    this.items = {}
+    this.items = {};
 
     this._buildCart();
     this._bindEvents();
@@ -64,7 +64,7 @@ define('shopping-cart', [], function() {
 
   fn._formatMoney = function(value) {
     return parseFloat(Math.round(value * 100) / 100).toFixed(2);
-  }
+  };
 
   fn._recountProducts = function(e) {
     e.preventDefault();

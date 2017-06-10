@@ -16,7 +16,7 @@ $(document).ready(function() {
     }
   }, waypointsOptions);
 
-  var campaignBlockContainer = $('#campaign-block-container')
+  var campaignBlockContainer = $('#campaign-block-container');
 
   campaignBlockContainer.waypoint(function(direction) {
     var progressBar = campaignBlockContainer.find('#goal-progress'),
