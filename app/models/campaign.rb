@@ -39,7 +39,7 @@ class Campaign < ApplicationRecord
 
   def current_amount
     items.reduce(0) do |sum, item|
-      sum += item.current_amount * item.price
+      sum + item.current_amount * item.price
     end
   end
 
