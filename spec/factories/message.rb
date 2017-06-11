@@ -13,4 +13,12 @@ FactoryGirl.define do
       status false
     end
   end
+
+  factory :message_two, class: CampaignMessage do
+    order_reference 'fdd9771e-a459-4a16-a961-02f2acec2c4b'
+    author 'Jane Roe'
+    email 'jane.roe@gmail.com'
+    message 'Espero que essa contribuição seja o bastante para ajudar vocês a realizar esse sonho.'
+    status true
+  end
 end
