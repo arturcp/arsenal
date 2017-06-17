@@ -11,7 +11,8 @@ class CheckoutsController < ApplicationController
   def create
     payment = PagSeguro::PaymentRequest.new
     payment.credentials = PagSeguro::AccountCredentials.new(ENV.fetch('PAGSEGURO_EMAIL'), ENV.fetch('PAGSEGURO_TOKEN'))
-
+    payment.notification_url =  ENV.fetch('NOTIFICATION_URL')
+    payment.redirect_url = ENV.fetch('REDIRECT_URL')
     payment.reference = SecureRandom.uuid
 
     shopping_cart.items.each do |item|
