@@ -85,6 +85,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 end
 
-# PagSeguro.configure do |config|
-#   config.environment = :production
-# end
+PagSeguro.configure do |config|
+  # config.environment = :production
+  config.environment = :sandbox
+end
