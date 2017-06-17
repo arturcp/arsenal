@@ -1,6 +1,5 @@
 class CheckoutsController < ApplicationController
   before_action :save_cart_state, only: :create
-  after_action :clear_shopping_cart, only: :show
 
   def show
     @order = Order.find(safe_params[:id])
@@ -14,8 +13,6 @@ class CheckoutsController < ApplicationController
     payment.credentials = PagSeguro::AccountCredentials.new(ENV.fetch('PAGSEGURO_EMAIL'), ENV.fetch('PAGSEGURO_TOKEN'))
 
     payment.reference = SecureRandom.uuid
-    payment.notification_url =  ENV.fetch('NOTIFICATION_URL')
-    payment.redirect_url = "#{ENV.fetch('REDIRECT_URL')}/#{payment.reference}"
 
     shopping_cart.items.each do |item|
       payment.items << {
@@ -48,8 +45,6 @@ class CheckoutsController < ApplicationController
         email: safe_params[:email],
         message: safe_params[:comments]
       )
-
-      shopping_cart.items.clear
 
       redirect_to response.url
     end

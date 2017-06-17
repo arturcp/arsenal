@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :shopping_cart, only: [:index, :create, :destroy]
   end
   resources :checkouts, only: [:create, :show]
+  resources :checkout_status, only: :index
   resource :notifications, only: :create
   resources :home, only: [:index, :show]
 
