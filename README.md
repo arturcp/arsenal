@@ -2,6 +2,8 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e271beab7a214c169bfac57d40fc6832)](https://www.codacy.com/app/arturcp/arsenal?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=arturcp/arsenal&amp;utm_campaign=Badge_Grade)
 
+**Important** this project was discontinued.
+
 # Pagseguro
 
 ## Testing on the sandbox
